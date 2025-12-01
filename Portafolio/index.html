@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portafolio — Ruth Sainz Santos-Olmo</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f7e9ff;
+      color: #30103a;
+    }
+    header {
+      background: linear-gradient(135deg, #7d1f9c, #b04cd6);
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+      position: relative;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.4rem;
+    }
+    header h2 {
+      margin-top: 6px;
+      font-weight: 300;
+      opacity: 0.9;
+    }
+    /* Icono en header */
+    .icon-header {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 50px;
+      height: 50px;
+    }
+
+    main {
+      max-width: 1200px;
+      margin: auto;
+      padding: 30px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+    }
+
+    article {
+      background: #fff0ff;
+      border-radius: 14px;
+      box-shadow: 0 4px 20px rgba(140, 0, 150, 0.18);
+      overflow: hidden;
+      transition: transform .25s, box-shadow .25s;
+      border: 2px solid #e8c8ff;
+      text-align: center;
+    }
+    article:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 28px rgba(110, 0, 130, 0.28);
+      border-color: #d8a9ff;
+    }
+    article img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-bottom: 2px solid #f0d6ff;
+    }
+    article h3 {
+      margin: 16px;
+      font-size: 1.3rem;
+      color: #5a0b7d;
+    }
+    article p {
+      margin: 0 16px 16px;
+      color: #441a57;
+      line-height: 1.5;
+    }
+    article a {
+      display: inline-block;
+      margin: 0 16px 20px;
+      padding: 10px 16px;
+      background: #8c1bd1;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: background .2s;
+    }
+    article a:hover {
+      background: #6b129f;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #3b0d47;
+      color: #e9c8ff;
+      margin-top: 40px;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Ruth Sainz Santos-Olmo</h1>
+    <h2>Portafolio Web</h2>
+    <img src="favicon.png" alt="Icono" class="icon-header">
+  </header>
+
+  <main>
+    <article>
+      <img src="imagen.jpg" alt="Imagen del proyecto">
+      <h3>Título del Proyecto</h3>
+      <p>Breve descripción del proyecto, explicando su finalidad y tecnologías usadas.</p>
+      <a href="otrapagina.html">Saber más</a>
+    </article>
+    <article>
+      <img src="imagen.jpg" alt="Imagen del proyecto">
+      <h3>Título del Proyecto</h3>
+      <p>Breve descripción del proyecto, explicando su finalidad y tecnologías usadas.</p>
+      <a href="otrapagina.html">Saber más</a>
+    </article>
+    <article>
+      <img src="imagen.jpg" alt="Imagen del proyecto">
+      <h3>Título del Proyecto</h3>
+      <p>Breve descripción del proyecto, explicando su finalidad y tecnologías usadas.</p>
+      <a href="otrapagina.html">Saber más</a>
+    </article>
+    <article>
+      <img src="imagen.jpg" alt="Imagen del proyecto">
+      <h3>Título del Proyecto</h3>
+      <p>Breve descripción del proyecto, explicando su finalidad y tecnologías usadas.</p>
+      <a href="otrapagina.html">Saber más</a>
+    </article>
+  </main>
+
+  <footer>
+    rutsaisan.code@gmail.com — +34 634 48 09 89
+  </footer>
+</body>
+</html>
