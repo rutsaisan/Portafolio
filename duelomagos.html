@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portafolio — Duelo de Magos</title>
+  <style>
+    /* --- Estilos Generales --- */
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f7e9ff; /* Fondo claro lila */
+      color: #30103a;      /* Texto morado oscuro */
+    }
+
+    /* --- Estilos de la Cabecera (HEADER) --- */
+    header {
+        background: linear-gradient(to bottom, rgba(125, 31, 156, 0.4), rgba(48, 16, 58, 0.7)), url(Bosque_mágico.png);
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+        color: white;
+        padding: 80px 20px;
+        text-align: center;
+        position: relative;
+        box-shadow: 0 4px 15px rgba(48, 16, 58, 0.2);
+    }
+
+    header h1 {
+        margin: 0;
+        font-size: 3.5rem;
+        font-weight: bold;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        text-shadow: 2px 2px 4px rgba(48, 16, 58, 0.8), 0 0 20px rgba(176, 76, 214, 0.6);
+    }
+
+    header h2 {
+      margin-top: 15px;
+      font-size: 1.4rem;
+      font-weight: 300;
+      opacity: 0.95;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    }
+
+    .icon-header {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 50px;
+      height: 50px;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+    }
+
+    /* --- Imagen de Portada del Main --- */
+    .portada {
+        width: 100%;             /* Ajuste para móviles */
+        max-width: 600px;        /* Límite para PC */
+        margin: 0 auto 30px auto; /* Centrado y margen inferior */
+        display: block;
+        height: auto;
+        border-radius: 15px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    /* --- Estilos del MAIN y TEXTO --- */
+    main {
+      max-width: 900px; /* Un ancho de lectura cómodo */
+      margin: auto;
+      padding: 30px;
+      min-height: 200px; 
+    }
+    
+    p {
+        line-height: 1.6; /* Mejor lectura */
+        font-size: 1.1rem;
+    }
+
+    /* --- ESTILOS DE LA CONSOLA MÁGICA (NUEVO) --- */
+    .console-window {
+      background-color: #1a0524; /* Fondo oscuro */
+      border-radius: 10px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      margin: 40px auto;
+      overflow: hidden;
+      border: 1px solid #4a1d61;
+      text-align: left; /* Alineación del código a la izquierda */
+    }
+
+    .console-header {
+      background-color: #2d0f3d;
+      padding: 10px 15px;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid #4a1d61;
+    }
+
+    .dot {
+      height: 12px;
+      width: 12px;
+      border-radius: 50%;
+      display: inline-block;
+      margin-right: 8px;
+    }
+    .red { background-color: #ff5f56; }
+    .yellow { background-color: #ffbd2e; }
+    .green { background-color: #27c93f; }
+
+    .console-title {
+      color: #cba6e0;
+      font-size: 0.85rem;
+      margin-left: 15px;
+      font-family: monospace;
+      opacity: 0.8;
+    }
+
+    .console-body {
+      padding: 20px;
+      overflow-x: auto;
+    }
+
+    /* Estilo del código dentro de la consola */
+    pre {
+      margin: 0;
+      font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+      font-size: 0.9rem;
+      color: #e9c8ff; /* Color base del texto */
+    }
+    
+    /* Clase para colorear los comentarios de Python */
+    .comment {
+        color: #6a4c93;
+        font-style: italic;
+    }
+
+    /* --- FOOTER --- */
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #3b0d47;
+      color: #e9c8ff;
+      margin-top: 40px;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>DUELO DE MAGOS</h1>
+    <h2>Portafolio Web</h2>
+    <img src="favicon.png" alt="Icono" class="icon-header">
+  </header>
+
+  <main>
+      <img src="Duelo_Magos.png" alt="Imagen Portada" class="portada">
+      
+      <h2>Descripción del programa</h2>
+      <p>
+         Este proyecto es un programa en Python que combina entrada de datos, conversión y validación de tipos, condicionales, funciones y bucles para simular un duelo mágico entre un mago y su propio escudo protector.
+         Primero, el usuario introduce la edad del mago. El programa valida la entrada y, si no es un número válido, asigna automáticamente la edad 100.
+      </p>
+      
+      <div class="console-window">
+        <div class="console-header">
+          <span class="dot red"></span>
+          <span class="dot yellow"></span>
+          <span class="dot green"></span>
+          <span class="console-title">duelo_magico.py</span>
+        </div>
+        
+        <div class="console-body">
+<pre><code>
+<span class="comment"># pedir edad</span>
+edad_mago = input("Introduce la edad del mago: ")
+
+<span class="comment"># convertir a entero</span>
+try:
+    edad_mago = int(edad_mago)
+except: 
+    <span class="comment"># si falla, pon 100</span>
+    edad_mago = 100
+
+<span class="comment"># clasifica por edad</span>
+if edad_mago < 30: 
+    classificacion_mago = "Aprendiz"
+    print("El mago es: ", classificacion_mago)
+elif edad_mago >= 30 and edad_mago <= 99:
+    classificacion_mago = "Hechicero"
+    print("El mago es: ", classificacion_mago)
+elif edad_mago >= 100:
+    classificacion_mago = "Archimago"
+    print("El mago es: ", classificacion_mago)
+
+<span class="comment"># funcion poderBase</span>
+def poderBase(edad):
+    if classificacion_mago == "Aprendiz":
+        return 10
+    elif classificacion_mago == "Hechicero":
+        return 15
+    elif classificacion_mago == "Archimago":
+        return 20
+
+poder = poderBase(edad_mago)
+escudo = 15
+
+<span class="comment"># empezamos bucle de combate</span>
+for turno in range(1, 3):
+    if turno == 1:
+        print("Turno 1 --> Hechizo de Fuego")
+        daño = poder // 2
+    else:
+        print("Turno 2 --> Hechizo de Rayo")
+        daño = poder // 3
+    
+    <span class="comment"># Validaciones</span>
+    assert isinstance(daño, int) and daño >= 0, "Error en daño"
+    
+    escudo = escudo - daño
+    print(f"El escudo ha recibido {daño} daño")
+
+    if escudo < 0:
+        escudo = 0
+
+    if escudo == 0:
+        print("🏆 WINNER! Mago rompe escudo 🏆")
+        break
+    else:
+        print(f"El escudo resiste. Energía: {escudo}")
+</code></pre>
+        </div>
+      </div>
+      </main>
+  
+  <footer>
+      © 2023 Ruth Sainz Santos-Olmo
+  </footer>
+</body>
+</html>
