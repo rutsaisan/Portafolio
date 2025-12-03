@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portafolio — Duelo de Dragones</title>
+  <style>
+    /* --- Estilos Generales --- */
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f7e9ff; /* Fondo claro lila */
+      color: #30103a;      /* Texto morado oscuro */
+    }
+
+    /* --- Estilos de la Cabecera (HEADER) --- */
+    header {
+        background: linear-gradient(to bottom, rgba(125, 31, 156, 0.4), rgba(48, 16, 58, 0.7)), url(Arena_Dragones.jpg);
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+        color: white;
+        padding: 80px 20px;
+        text-align: center;
+        position: relative;
+        box-shadow: 0 4px 15px rgba(48, 16, 58, 0.2);
+    }
+
+    header h1 {
+        margin: 0;
+        font-size: 3.5rem;
+        font-weight: bold;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        text-shadow: 2px 2px 4px rgba(48, 16, 58, 0.8), 0 0 20px rgba(176, 76, 214, 0.6);
+    }
+
+    header h2 {
+      margin-top: 15px;
+      font-size: 1.4rem;
+      font-weight: 300;
+      opacity: 0.95;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    }
+
+    .icon-header {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 50px;
+      height: 50px;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+    }
+
+    /* --- Imagen de Portada del Main --- */
+    .portada {
+        width: 100%;             /* Ajuste para móviles */
+        max-width: 600px;        /* Límite para PC */
+        margin: 0 auto 30px auto; /* Centrado y margen inferior */
+        display: block;
+        height: auto;
+        border-radius: 15px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    /* --- Estilos del MAIN y TEXTO --- */
+    main {
+      max-width: 900px; /* Un ancho de lectura cómodo */
+      margin: auto;
+      padding: 30px;
+      min-height: 200px;
+    }
+   
+    /* AQUÍ ESTÁ EL CAMBIO PRINCIPAL PARA SEPARAR LÍNEAS */
+    p {
+        line-height: 2.2; /* Aumentado de 1.6 a 2.2 para mucha más separación */
+        font-size: 1.1rem;
+        margin-bottom: 20px;
+    }
+
+    /* Estilo extra para separar los títulos dentro del texto */
+    h3 {
+        margin-top: 40px;    /* Mucho espacio por arriba */
+        margin-bottom: 20px; /* Espacio por abajo */
+        color: #581c70;
+    }
+
+    /* --- ESTILOS DE LA CONSOLA MÁGICA (NUEVO) --- */
+    .console-window {
+      background-color: #1a0524; /* Fondo oscuro */
+      border-radius: 10px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      margin: 40px auto;
+      overflow: hidden;
+      border: 1px solid #4a1d61;
+      text-align: left; /* Alineación del código a la izquierda */
+    }
+
+    .console-header {
+      background-color: #2d0f3d;
+      padding: 10px 15px;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid #4a1d61;
+    }
+
+    .dot {
+      height: 12px;
+      width: 12px;
+      border-radius: 50%;
+      display: inline-block;
+      margin-right: 8px;
+    }
+    .red { background-color: #ff5f56; }
+    .yellow { background-color: #ffbd2e; }
+    .green { background-color: #27c93f; }
+
+    .console-title {
+      color: #cba6e0;
+      font-size: 0.85rem;
+      margin-left: 15px;
+      font-family: monospace;
+      opacity: 0.8;
+    }
+
+    .console-body {
+      padding: 20px;
+      overflow-x: auto;
+    }
+
+    /* Estilo del código dentro de la consola */
+    pre {
+      margin: 0;
+      font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+      font-size: 0.9rem;
+      color: #e9c8ff; /* Color base del texto */
+      line-height: 1.5; /* Un poquito más de espacio también en el código */
+    }
+   
+    /* Clase para colorear los comentarios de Python */
+    .comment {
+        color: #6a4c93;
+        font-style: italic;
+    }
+
+    /* --- FOOTER --- */
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #3b0d47;
+      color: #e9c8ff;
+      margin-top: 40px;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>DUELO DE DRAGONES</h1>
+    <h2>Portafolio Web</h2>
+    <a href="index.html"> <img src="favicon.png" alt="Icono" class="icon-header"></a>
+  </header>
+
+  <main>
+      <img src="Duelo_dragones.jpg" alt="Imagen Portada" class="portada">
+     
+      <h2>Descripción del programa</h2>
+      
+      <div style="line-height: 2.2; font-size: 1.1rem;">
+      
+        <h3>🐉 Duelo de Dragones: Simulador de Entrenamiento y Combate </h3>
+
+         ¡Bienvenido a la arena! Este programa en Python es un simulador completo que te pone en la piel de un entrenador de dragones. No es solo un juego de azar: la edad de tu dragón define su potencial.<br><br>
+
+         <h3>🐉 ¿Qué hace el "Simulador de Duelo de Dragones"?</h3>
+            Este proyecto es un programa en Python que simula la vida, entrenamiento y combate de dos dragones. El objetivo es ver cómo la edad y el entrenamiento afectan el resultado de una batalla automática.<br><br>
+
+            El funcionamiento se divide en 4 fases principales:<br><br>
+
+            <strong>1. Registro y Validación de Datos (Input & Safety)</strong><br>
+            Lo que hace: El programa pide al usuario el nombre y la edad de dos dragones (Dragón A y Dragón B).<br>
+            Seguridad: Incluye un sistema de protección (try/except). Si el usuario se equivoca y escribe letras en lugar de números para la edad, el programa no se rompe; en su lugar, asigna automáticamente una edad de 100 años para que el juego pueda continuar.<br><br>
+
+            <strong>2. Clasificación Biológica (Lógica Condicional)</strong><br>
+            Lo que hace: El programa analiza la edad introducida y etiqueta al dragón en una de tres categorías:<br>
+            Joven: Menos de 50 años.<br>
+            Adulto: Entre 50 y 199 años.<br>
+            Anciano: 200 años o más.<br>
+            Por qué importa: Esta clasificación define qué tan rápido aprenderá el dragón en la siguiente fase.<br><br>
+
+            <strong>3. Fase de Entrenamiento (Bucles y Acumuladores)</strong><br>
+            Lo que hace: Simula un campamento de entrenamiento de 3 días (for loop).<br>
+            Mecánica RPG:<br>
+            Los dragones Jóvenes son más enérgicos: ganan +2 de Fuerza y Resistencia por día.<br>
+            Los Adultos y Ancianos son más estables: ganan +1 de Fuerza y Resistencia por día.<br>
+            Al final de esta fase, cada dragón tiene unas estadísticas únicas basadas en su edad.<br><br>
+
+            <strong>4. El Duelo (Motor de Combate)</strong><br>
+            Lo que hace: Enfrenta a los dragones en una batalla por turnos hasta que uno se queda sin energía (while loop).<br>
+            Cálculo de Daño: Utiliza una fórmula dinámica: Fuerza del Atacante - Resistencia del Defensor.<br>
+            Regla de Desgaste: Para evitar empates infinitos (si la defensa es muy alta), el programa asegura que siempre se reciba al menos 1 punto de daño por golpe.<br>
+            Resultado: Muestra narrativamente qué dragón ha ganado (🏆) y cuál se ha retirado a descansar bajo una nube de tormenta (⛈️).<br>
+
+            <h3>🧠 Conceptos de programación que demuestra:</h3>
+            Este proyecto es un excelente ejemplo práctico de:<br>
+            Entrada/Salida de datos (input, print).<br>
+            Control de flujo (if, elif, else).<br>
+            Manejo de errores (try, except).<br>
+            Bucles determinados (for) e indeterminados (while).<br>
+            Operadores lógicos y matemáticos.<br>
+
+      </div>
+     
+      <div class="console-window">
+        <div class="console-header">
+          <span class="dot red"></span>
+          <span class="dot yellow"></span>
+          <span class="dot green"></span>
+          <span class="console-title">duelo_magico.py</span>
+        </div>
+       
+        <div class="console-body">
+<pre><code>
+        nombre_dragon_a = input("Dime el nombre del dragón A: ")
+        edad_dragon_a = input("Dime la edad del dragón A: ")
+        clasificacion_dragon_a = ""
+        fuerza_dragon_a = 0
+        resistencia_dragon_a = 0
+        vida_dragon_a = 50
+
+        print("El nombre del dragon A es:", nombre_dragon_a)
+        print("La edad del dragon A es:", edad_dragon_a)
+
+        nombre_dragon_b = input("Dime el nombre del dragón B: ")
+        edad_dragon_b = input("Dime la edad del dragón B: ")
+        clasificacion_dragon_b = ""
+        fuerza_dragon_b = 0
+        resistencia_dragon_b = 0
+        vida_dragon_b = 50
+
+        print("El nombre del dragon B es:", nombre_dragon_b)
+        print("La edad del dragon B es:", edad_dragon_b)
+
+        <span class="comment"># En este bloque me aseguro de que son enteros #######################</span>
+
+        try:
+            edad_dragon_a = int(edad_dragon_a)
+            print("He convertido la edad A correctamente")
+        except:
+            edad_dragon_a = 100
+            print("No he convertido la edad A correctamente, asigno 100")
+
+        try:
+            edad_dragon_b = int(edad_dragon_b)
+            print("He convertido la edad B correctamente")
+        except:
+            edad_dragon_b = 100
+            print("No he convertido la edad B correctamente, asigno 100")
+
+        <span class="comment"># En este bloque clasifico a los dragones #######################</span>
+
+        if edad_dragon_a < 50:
+            clasificacion_dragon_a = "Joven"
+        elif edad_dragon_a >= 50 and edad_dragon_a <= 199:
+            clasificacion_dragon_a = "Adulto"
+        elif edad_dragon_a >= 200:
+            clasificacion_dragon_a = "Anciano"
+        print("El dragon A es:", clasificacion_dragon_a)
+
+        if edad_dragon_b < 50:
+            clasificacion_dragon_b = "Joven"
+        elif edad_dragon_b >= 50 and edad_dragon_b <= 199:
+            clasificacion_dragon_b = "Adulto"
+        elif edad_dragon_b >= 200:
+            clasificacion_dragon_b = "Anciano"
+        print("El dragon B es:", clasificacion_dragon_b)
+
+        <span class="comment"># Ahora los vamos a entrenar ###################################</span>
+
+        for dia in range(1, 4):
+            <span class="comment"># Como entrenar a tu dragon A</span>
+            if clasificacion_dragon_a == "Joven":
+                fuerza_dragon_a += 2
+                resistencia_dragon_a += 2
+            elif clasificacion_dragon_a == "Adulto":
+                fuerza_dragon_a += 1
+                resistencia_dragon_a += 1
+            elif clasificacion_dragon_a == "Anciano":
+                fuerza_dragon_a += 1
+                resistencia_dragon_a += 1
+            print("Final del dia", dia)
+            print("El dragon A ahora tiene ", fuerza_dragon_a, "de fuerza y ", resistencia_dragon_a, "de resistencia")
+           
+            <span class="comment"># Como entrenar a tu dragon B</span>
+            if clasificacion_dragon_b == "Joven":
+                fuerza_dragon_b += 2
+                resistencia_dragon_b += 2
+            elif clasificacion_dragon_b == "Adulto":
+                fuerza_dragon_b += 1
+                resistencia_dragon_b += 1
+            elif clasificacion_dragon_b == "Anciano":
+                fuerza_dragon_b += 1
+                resistencia_dragon_b += 1
+            print("Final del dia", dia)
+            print("El dragon B ahora tiene ", fuerza_dragon_b, "de fuerza y ", resistencia_dragon_b, "de resistencia")
+
+        <span class="comment"># DUELO  ##############################################################################</span>
+        print("\n🔥⚔️ --- COMIENZA EL DUELO --- ⚔️🔥")
+        print("Vida dragón A", vida_dragon_a)
+        print("Vida dragón B", vida_dragon_b)
+        turno = 1
+
+        while vida_dragon_b > 0 and vida_dragon_a > 0:
+
+            print("\n--- ⏱️ Turno", turno, "---")
+
+            <span class="comment"># Ataque dragón A a dragón B</span>
+            for intento in range(2):
+                dano_a = (fuerza_dragon_a - resistencia_dragon_b)
+                if dano_a <= 0:
+                    dano_a = 1
+               
+                vida_dragon_b -= dano_a
+                if vida_dragon_b < 0:
+                    vida_dragon_b = 0
+                   
+                print(nombre_dragon_a, "ataca 🤜💥 e inflige", dano_a, "de daño. Salud de", nombre_dragon_b, ":", vida_dragon_b)
+               
+                if vida_dragon_b == 0:
+                    break
+
+            if vida_dragon_b == 0:
+                break
+
+            <span class="comment"># Ataque dragón B a dragón A </span>
+            for intento in range(2):
+                dano_b = (fuerza_dragon_b - resistencia_dragon_a)
+                if dano_b <= 0:
+                    dano_b = 1
+                   
+                vida_dragon_a -= dano_b
+                if vida_dragon_a < 0:
+                    vida_dragon_a = 0
+                   
+                print(nombre_dragon_b, "ataca 🤜💥 e inflige", dano_b, "de daño. Salud de", nombre_dragon_a, ":", vida_dragon_a)
+               
+                if vida_dragon_a == 0:
+                    break
+
+            turno += 1
+
+        <span class="comment"># FINAL DEL JUEGO CON EMOJIS ############################################</span>
+
+        print("\n✨✨✨ --- RESULTADO FINAL --- ✨✨✨")
+
+        if vida_dragon_a > 0:
+            print("🏆👑 ¡FELICIDADES! El ganador es", nombre_dragon_a, "! 🐉🎉")
+            print("⛈️", nombre_dragon_b, "está agotado bajo su nubecita gris...")
+        else:
+            print("🏆👑 ¡FELICIDADES! El ganador es", nombre_dragon_b, "! 🐉🎉")
+            print("⛈️", nombre_dragon_a, "está agotado bajo su nubecita gris...")
+</code></pre>
+        </div>
+      </div>
+  </main>
+ 
+  <footer>
+      © 2023 Ruth Sainz Santos-Olmo
+  </footer>
+</body>
+</html>
