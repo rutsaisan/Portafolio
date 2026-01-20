@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="favicon.png" type="image/png">
+  <title>Portafolio — Semáforo de las Relaciones</title>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <style>
+    /* --- Estilos Generales --- */
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f7e9ff;
+      color: #30103a;
+    }
+
+    /* --- Header (RESTAURADO AL ORIGINAL) --- */
+    header {
+        background: linear-gradient(to bottom, rgba(125, 31, 156, 0.4), rgba(48, 16, 58, 0.7)), url(Vibe_check_alargado.png);
+        background-color: #30103a;
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+        color: white;
+        padding: 80px 20px;
+        text-align: center;
+        position: relative;
+        box-shadow: 0 4px 15px rgba(48, 16, 58, 0.2);
+    }
+
+    header h1 {
+        margin: 0;
+        font-size: 3.5rem;
+        font-weight: bold;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        text-shadow: 2px 2px 4px rgba(48, 16, 58, 0.8), 0 0 20px rgba(176, 76, 214, 0.6);
+    }
+
+    header h2 {
+      margin-top: 15px;
+      font-size: 1.4rem;
+      font-weight: 300;
+      opacity: 0.95;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    }
+
+    .icon-header {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 50px;
+      height: 50px;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+    }
+
+    /* --- Contenido Principal (DISEÑO MEJORADO) --- */
+    main {
+      max-width: 900px;
+      margin: auto;
+      padding: 30px;
+      min-height: 200px; 
+    }
+    
+    .portada {
+        width: 100%;
+        max-width: 800px;
+        margin: 0 auto 40px auto;
+        display: block;
+        height: auto;
+        border-radius: 15px;
+        box-shadow: 0 10px 25px rgba(48, 16, 58, 0.15);
+    }
+
+    h2.section-title {
+        color: #5a1e75;
+        border-bottom: 2px solid #dcb5ff;
+        padding-bottom: 10px;
+        margin-top: 40px;
+        font-size: 1.8rem;
+    }
+
+    h3 {
+        color: #7d1f9c;
+        margin-top: 0; /* Ajustado para las cajas */
+        font-size: 1.3rem;
+        margin-bottom: 15px;
+    }
+
+    p {
+        line-height: 1.7;
+        font-size: 1.1rem;
+        margin-bottom: 20px;
+        color: #4a2c52;
+    }
+
+    /* Estilos para listas y cajas del contenido */
+    .feature-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+        margin-top: 30px;
+    }
+
+    @media (min-width: 768px) {
+        .feature-grid {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+
+    .info-box {
+        background: white;
+        padding: 25px;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(48, 16, 58, 0.05);
+        border: 1px solid #ebd4ff;
+    }
+
+    .info-box ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .info-box li {
+        margin-bottom: 15px;
+        padding-left: 25px;
+        position: relative;
+        line-height: 1.5;
+    }
+
+    .info-box li::before {
+        content: "•";
+        color: #9d4edd;
+        font-weight: bold;
+        font-size: 1.5rem;
+        position: absolute;
+        left: 0;
+        top: -5px;
+    }
+
+    .tech-badges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 15px;
+    }
+
+    .badge {
+        background-color: #f0dbff;
+        color: #5a1e75;
+        padding: 6px 14px;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        font-weight: bold;
+        border: 1px solid #dcb5ff;
+    }
+
+    .design-note {
+        background-color: #fff8e1;
+        border-left: 5px solid #ffca28;
+        padding: 20px;
+        margin-top: 40px;
+        border-radius: 0 10px 10px 0;
+        color: #5d4037;
+    }
+
+    .btn-container {
+        text-align: center;
+        margin-top: 50px;
+        margin-bottom: 20px;
+    }
+
+    .btn-primary {
+        background-color: #7d1f9c;
+        color: white;
+        padding: 15px 30px;
+        text-decoration: none;
+        font-weight: bold;
+        border-radius: 50px;
+        transition: background-color 0.3s, transform 0.2s;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        box-shadow: 0 4px 10px rgba(125, 31, 156, 0.3);
+    }
+
+    .btn-primary:hover {
+        background-color: #5a1e75;
+        transform: translateY(-3px);
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #3b0d47;
+      color: #e9c8ff;
+      margin-top: 60px;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>VIBE CHECK</h1>
+    <h2>Portafolio Web</h2>
+    <a href="index.html"> <img src="favicon.png" alt="Icono" class="icon-header"></a>
+  </header>
+
+  <main>
+      <img src="Vibe_Check.png" alt="Imagen Portada Semáforo Relaciones" class="portada">
+      
+      <section>
+          <h2 class="section-title">Descripción del proyecto</h2>
+          <p>
+              Esta página surgió de una necesidad real: tenía que dar una charla en los Scouts sobre relaciones afectivas para aprender a identificar qué queremos, qué personas nos suman y cuáles no. 
+          </p>
+          <p>
+              <strong>Vibe Check: El Semáforo de las Relaciones</strong> es una aplicación web interactiva diseñada bajo el formato de "presentación guiada". Su propósito es enseñar a identificar la calidad de los vínculos utilizando una metáfora universal:
+          </p>
+          <ul style="padding-left: 20px; margin-bottom: 20px; color: #4a2c52; list-style-type: none;">
+              <li style="margin-bottom: 8px;">🔴 <strong>Red Flags:</strong> Peligro (violencia, control).</li>
+              <li style="margin-bottom: 8px;">🟡 <strong>Yellow Flags:</strong> Precaución (ambigüedad).</li>
+              <li style="margin-bottom: 8px;">🟢 <strong>Green Flags:</strong> Relación sana (seguridad).</li>
+          </ul>
+          <p>
+              El proyecto combina psicoeducación con gamificación para hacer el aprendizaje ligero y memorable, evitando que se sienta como una "lección aburrida".
+          </p>
+      </section>
+
+      <div class="feature-grid">
+          
+          <div class="info-box">
+              <h3>✨ Funcionalidades Clave</h3>
+              <ul>
+                  <li>
+                      <strong>Minijuego "Flag Sorter":</strong> Lógica en JavaScript puro que presenta situaciones aleatorias y evalúa la decisión del usuario con feedback instantáneo.
+                  </li>
+                  <li>
+                      <strong>Narrativa Visual:</strong> Diseño de fondos y assets que transicionan suavemente entre estados de ánimo (del caos rojo a la paz verde).
+                  </li>
+                  <li>
+                      <strong>Micro-interacciones:</strong> Animaciones CSS (blob, fade-in, shake para errores) que hacen la experiencia táctil y reactiva.
+                  </li>
+              </ul>
+          </div>
+
+          <div class="info-box">
+              <h3>💻 Tecnologías</h3>
+              <p>Construido con un enfoque moderno y ligero:</p>
+              <div class="tech-badges">
+                  <span class="badge">HTML5 Semántico</span>
+                  <span class="badge">Tailwind CSS</span>
+                  <span class="badge">Vanilla JavaScript</span>
+                  <span class="badge">Arte generado por IA</span>
+              </div>
+              <br>
+              <p style="font-size: 0.95rem; margin-top: 10px;">
+                  El diseño es <em>responsive</em> (adaptable a móviles) y sigue la metodología "Utility-First" para los estilos.
+              </p>
+          </div>
+      </div>
+
+      <div class="design-note">
+          <h3>🎨 Enfoque de Diseño</h3>
+          <p>
+              Este proyecto rechaza la estética clínica habitual de la salud mental para abrazar un estilo <strong>"Cozy UI"</strong> (amigable y acogedor). A través de una paleta de colores semántica y un diseño centrado en la narrativa, los usuarios navegan por los matices de las relaciones humanas sin sentirse juzgados.
+          </p>
+      </div>
+
+      <div class="btn-container">
+          <a href="https://rutsaisan.github.io/Charla-Relaciones-Amorosas/" class="btn-primary">
+              <i data-lucide="play-circle"></i> Ver Proyecto en Vivo
+          </a>
+      </div>
+
+  </main>
+  
+  <footer>
+      © 2025 Ruth Sainz Santos-Olmo
+  </footer>
+
+  <script>
+    // Inicializar iconos
+    lucide.createIcons();
+  </script>
+</body>
+</html>
