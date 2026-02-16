@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portafolio — La Secta Roja</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        /* --- Estilos Generales (Heredados de tu estética) --- */
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f7e9ff; /* Fondo claro lila */
+            color: #30103a;      /* Texto morado oscuro */
+            scroll-behavior: smooth;
+        }
+
+        /* --- Estilos de la Cabecera --- */
+        header {
+            background: linear-gradient(to bottom, rgba(125, 31, 156, 0.6), rgba(48, 16, 58, 0.8)), 
+                        url('minijuego.png'); /* Imagen de bosque oscuro */
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 20px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(48, 16, 58, 0.3);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 3rem;
+            font-family: 'Press Start 2P', cursive;
+            text-shadow: 4px 4px 0px #b04cd6;
+            letter-spacing: -2px;
+        }
+
+        header h2 {
+            margin-top: 20px;
+            font-size: 1.2rem;
+            font-weight: 300;
+            opacity: 0.9;
+        }
+
+        /* --- Secciones del Main --- */
+        main {
+            max-width: 1000px;
+            margin: auto;
+            padding: 40px 20px;
+        }
+
+        .section-title {
+            border-left: 5px solid #7d1f9c;
+            padding-left: 15px;
+            margin-bottom: 25px;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 1.2rem;
+            margin-top: 50px;
+        }
+
+        p {
+            line-height: 1.8;
+            font-size: 1.1rem;
+            color: #4a1d61;
+        }
+
+        /* --- NUEVA SECCIÓN: LÓGICA --- */
+        .logic-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .logic-card {
+            background: rgba(125, 31, 156, 0.05);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px dashed #7d1f9c;
+        }
+
+        .logic-card h4 {
+            margin-top: 0;
+            color: #7d1f9c;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 0.8rem;
+        }
+
+        /* --- GALERÍA DE IMÁGENES Y ASSETS --- */
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .image-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            border: 2px solid #e9c8ff;
+        }
+
+        .image-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .image-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            background: #eee;
+            display: block;
+        }
+
+        .image-card .info {
+            padding: 15px;
+            text-align: center;
+            font-size: 0.9rem;
+            font-weight: bold;
+            background: #fdf6ff;
+        }
+
+        /* --- CONSOLA DE CÓDIGO (JavaScript) --- */
+        .console-window {
+            background-color: #1a0524;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            margin: 40px 0;
+            overflow: hidden;
+            border: 1px solid #4a1d61;
+        }
+
+        .console-header {
+            background-color: #2d0f3d;
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #4a1d61;
+        }
+
+        .dot { height: 12px; width: 12px; border-radius: 50%; display: inline-block; margin-right: 6px; }
+        .red { background-color: #ff5f56; }
+        .yellow { background-color: #ffbd2e; }
+        .green { background-color: #27c93f; }
+
+        .console-title {
+            color: #cba6e0;
+            font-size: 0.8rem;
+            font-family: monospace;
+        }
+
+        .run-btn {
+            background-color: #27c93f;
+            color: #1a0524;
+            border: none;
+            padding: 6px 18px;
+            border-radius: 20px;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 0.6rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .run-btn:hover { background-color: #3af155; transform: scale(1.05); }
+
+        .code-body {
+            padding: 25px;
+            max-height: 400px;
+            overflow-y: auto;
+            background: #1a0524;
+        }
+
+        pre {
+            margin: 0;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 0.9rem;
+            color: #e9c8ff;
+            line-height: 1.5;
+        }
+
+        .keyword { color: #f07178; }
+        .class-name { color: #ffcb6b; }
+        .string { color: #c3e88d; }
+        .comment { color: #6a4c93; font-style: italic; }
+
+        /* --- TERMINAL DE EJECUCIÓN --- */
+        #terminal-ejecucion {
+            display: none;
+            background: #000;
+            border: 2px solid #27c93f;
+            margin-top: 10px;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .terminal-body {
+            padding: 20px;
+            height: 250px;
+            overflow-y: auto;
+            font-family: 'Consolas', monospace;
+            color: #27c93f;
+            font-size: 0.9rem;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 10px;
+            height: 18px;
+            background: #27c93f;
+            margin-left: 5px;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink { 50% { opacity: 0; } }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        /* --- BOTÓN LIVE DEMO --- */
+        .live-demo-container {
+            text-align: center;
+            padding: 60px 0;
+        }
+
+        .btn-live {
+            display: inline-block;
+            background: #7d1f9c;
+            color: white;
+            padding: 20px 40px;
+            text-decoration: none;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 8px 0px #4a1d61;
+            transition: all 0.1s;
+        }
+
+        .btn-live:hover {
+            transform: translateY(2px);
+            box-shadow: 0 6px 0px #4a1d61;
+            background: #9026b3;
+        }
+
+        .btn-live:active {
+            transform: translateY(8px);
+            box-shadow: 0 0px 0px #4a1d61;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            text-align: center;
+            padding: 40px;
+            background: #30103a;
+            color: #e9c8ff;
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>LA SECTA ROJA</h1>
+        <h2>Salva al mundo de la oscuridad eterna</h2>
+    </header>
+
+    <main>
+        <section>
+            <h3 class="section-title">Historia del Proyecto</h3>
+            <p>
+                En "La Secta Roja", tomas el papel de una heroína que debe enfrentarse a una organización arcana que intenta sacrificar la luz del mundo. 
+                Este es un juego de acción tipo <em>bullet-hell</em> desarrollado íntegramente en JavaScript usando la API de Canvas.
+                Implementa lógica de partículas para explosiones, clases orientadas a objetos para los personajes y un sistema de oleadas que culmina en el enfrentamiento con el Sectario Supremo.
+            </p>
+        </section>
+
+        <!-- NUEVA SECCIÓN: LÓGICA Y FUNCIONAMIENTO -->
+        <section>
+            <h3 class="section-title">Lógica y Funcionamiento</h3>
+            <p>El juego se apoya en cuatro pilares fundamentales de programación que garantizan una experiencia fluida y reactiva:</p>
+            
+            <div class="logic-grid">
+                <div class="logic-card">
+                    <h4>Bucle Principal (Game Loop)</h4>
+                    <p>Utiliza <code>requestAnimationFrame</code> para sincronizar el dibujo con la tasa de refresco del monitor, logrando 60 FPS estables. En cada frame se limpia el lienzo, se calculan nuevas posiciones y se renderizan los objetos.</p>
+                </div>
+                <div class="logic-card">
+                    <h4>Arquitectura POO</h4>
+                    <p>Emplea Clases (Jugador, Npc, Boss) para encapsular propiedades como salud, velocidad y comportamiento. Esto permite heredar funcionalidades comunes y personalizar ataques específicos para el jefe final.</p>
+                </div>
+                <div class="logic-card">
+                    <h4>Detección de Colisiones</h4>
+                    <p>La lógica básica de impacto utiliza comparación de coordenadas rectangulares (Bounding Box). Si un proyectil entra en el área ocupada por una entidad, se reduce su salud y se activa el sistema de efectos.</p>
+                </div>
+                <div class="logic-card">
+                    <h4>Sistema de Partículas</h4>
+                    <p>Para las explosiones, se generan ráfagas de objetos de la clase <code>Particula</code> con trayectorias aleatorias y un factor de "vida" decreciente que controla su opacidad hasta desaparecer.</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h3 class="section-title">Visuales y Assets</h3>
+            <p>Aquí puedes los sprites utilizados para los personajes.</p>
+            <div class="gallery-container">
+                <div class="image-card">
+                    <img src="fondo.jpg" alt="Gameplay 1">
+                    <div class="info">Escena de Combate</div>
+                </div>
+                <div class="image-card">
+                    <img src="sprite.png" alt="Sprite Jugador">
+                    <div class="info">Protagonista</div>
+                </div>
+                <div class="image-card">
+                    <img src="boss.png" alt="Sprite Boss">
+                    <div class="info">Boss: El Sectario Supremo</div>
+                </div>
+                <div class="image-card">
+                    <img src="spritenpc.png" alt="Efectos">
+                    <div class="info">NPcs</div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h3 class="section-title">El Corazón del Juego</h3>
+            <div class="console-window">
+                <div class="console-header">
+                    <div class="controls">
+                        <span class="dot red"></span>
+                        <span class="dot yellow"></span>
+                        <span class="dot green"></span>
+                        <span class="console-title">engine.js — Visual Studio Code</span>
+                    </div>
+                    <button class="run-btn" onclick="iniciarTerminal()">▶ COMPILAR</button>
+                </div>
+                <div class="code-body">
+<pre><code><span class="comment">// --- SISTEMA DE CLASES ---</span>
+<span class="keyword">class</span> <span class="class-name">Jugador</span> {
+    <span class="keyword">constructor</span>() {
+        <span class="keyword">this</span>.x = <span class="string">100</span>;
+        <span class="keyword">this</span>.vidas = <span class="string">10</span>;
+        <span class="keyword">this</span>.vel = <span class="string">8</span>;
+    }
+}
+
+<span class="keyword">class</span> <span class="class-name">Boss</span> <span class="keyword">extends</span> <span class="class-name">Npc</span> {
+    <span class="keyword">constructor</span>() {
+        <span class="keyword">super</span>();
+        <span class="keyword">this</span>.hp = <span class="string">60</span>;
+        <span class="keyword">this</span>.color = <span class="string">"#B00"</span>; <span class="comment">// Rojo sectario</span>
+    }
+    
+    ataqueEspecial() {
+        <span class="comment">// Triple disparo de magia oscura</span>
+        proyectilesEnemigos.push(<span class="keyword">new</span> Proyectil(...));
+    }
+}
+
+<span class="comment">// --- BUCLE PRINCIPAL ---</span>
+<span class="keyword">function</span> <span class="class-name">bucle</span>() {
+    ctx.clearRect(<span class="string">0, 0, width, height</span>);
+    actualizarEntidades();
+    dibujarEscena();
+    requestAnimationFrame(bucle);
+}</code></pre>
+                </div>
+                <div id="terminal-ejecucion">
+                    <div class="terminal-body" id="terminal-output">
+                        <div>> Iniciando motor gráfico...</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="live-demo-container">
+            <h3 class="section-title" style="border:none; text-align:center;">¿Estás lista para la batalla?</h3>
+            <a href="https://juegorss.free.nf/index.html?i=1" class="btn-live">PROBAR JUEGO EN VIVO</a>
+        </section>
+    </main>
+
+    <footer>
+        © 2025 Ruth Sainz Santos-Olmo — Desarrolladora de Videojuegos Indie
+    </footer>
+
+    <script>
+        async function iniciarTerminal() {
+            const terminal = document.getElementById('terminal-ejecucion');
+            const output = document.getElementById('terminal-output');
+            terminal.style.display = 'block';
+            output.innerHTML = "";
+            
+            const lineas = [
+                "> Cargando librerías de Canvas...",
+                "> Inicializando clase Jugador...",
+                "> Cargando sprites: [spritenpc.png, boss.png]...",
+                "> Generando Secta Roja...",
+                "> ¡ADVERTENCIA! El Sectario Supremo ha aparecido.",
+                "> Estado: LISTO PARA JUGAR.",
+                "> Pulsa el botón de abajo para iniciar la aventura."
+            ];
+
+            for (let linea of lineas) {
+                const p = document.createElement('div');
+                p.textContent = linea;
+                output.appendChild(p);
+                output.scrollTop = output.scrollHeight;
+                await new Promise(r => setTimeout(r, 600));
+            }
+            
+            const cursor = document.createElement('span');
+            cursor.className = 'cursor';
+            output.appendChild(cursor);
+            
+            terminal.scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
