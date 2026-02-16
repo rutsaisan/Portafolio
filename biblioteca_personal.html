@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portafolio — Biblioteca Personal</title>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Google Fonts para mantener la identidad del proyecto -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Quicksand:wght@300;500;700&display=swap" rel="stylesheet">
+  
+  <style>
+    /* --- Estilos Generales (Inspirados en Vibe Check) --- */
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: #f7e9ff;
+      color: #30103a;
+    }
+
+    h1, h2, h3, .quicksand {
+        font-family: 'Quicksand', sans-serif;
+    }
+
+    /* --- Header --- */
+    header {
+        /* Degradado similar con temática de libros */
+        background: linear-gradient(to bottom, rgba(125, 31, 156, 0.5), rgba(48, 16, 58, 0.8)), 
+                    url('Biblioteca_personal_logo_bosque.jpg');
+        background-color: #30103a;
+        background-size: cover;
+        background-position: center;
+        color: white;
+        padding: 80px 20px;
+        text-align: center;
+        position: relative;
+        box-shadow: 0 4px 15px rgba(48, 16, 58, 0.2);
+    }
+
+    header h1 {
+        margin: 0;
+        font-size: 3.5rem;
+        font-weight: bold;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        text-shadow: 2px 2px 4px rgba(48, 16, 58, 0.8), 0 0 20px rgba(176, 76, 214, 0.6);
+    }
+
+    header h2 {
+      margin-top: 15px;
+      font-size: 1.4rem;
+      font-weight: 300;
+      opacity: 0.95;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    }
+
+    .icon-header {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 50px;
+      height: 50px;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+    }
+
+    /* --- Contenido Principal --- */
+    main {
+      max-width: 900px;
+      margin: auto;
+      padding: 30px;
+    }
+    
+    .portada {
+        width: 100%;
+        max-width: 800px;
+        margin: 0 auto 40px auto;
+        display: block;
+        height: auto;
+        border-radius: 15px;
+        box-shadow: 0 10px 25px rgba(48, 16, 58, 0.15);
+        background-color: #fff;
+    }
+
+    h2.section-title {
+        color: #5a1e75;
+        border-bottom: 2px solid #dcb5ff;
+        padding-bottom: 10px;
+        margin-top: 40px;
+        font-size: 1.8rem;
+    }
+
+    h3 {
+        color: #7d1f9c;
+        margin-top: 0;
+        font-size: 1.3rem;
+        margin-bottom: 15px;
+    }
+
+    p {
+        line-height: 1.7;
+        font-size: 1.1rem;
+        margin-bottom: 20px;
+        color: #4a2c52;
+    }
+
+    /* Grid de funcionalidades */
+    .feature-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+        margin-top: 30px;
+    }
+
+    @media (min-width: 768px) {
+        .feature-grid {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+
+    .info-box {
+        background: white;
+        padding: 25px;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(48, 16, 58, 0.05);
+        border: 1px solid #ebd4ff;
+    }
+
+    .info-box ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .info-box li {
+        margin-bottom: 12px;
+        padding-left: 25px;
+        position: relative;
+        line-height: 1.5;
+    }
+
+    .info-box li::before {
+        content: "📚";
+        position: absolute;
+        left: 0;
+        font-size: 1.1rem;
+    }
+
+    /* Badges */
+    .tech-badges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 15px;
+    }
+
+    .badge {
+        background-color: #f0dbff;
+        color: #5a1e75;
+        padding: 5px 12px;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        font-weight: bold;
+        border: 1px solid #dcb5ff;
+    }
+
+    .badge-status {
+        padding: 2px 8px;
+        border-radius: 5px;
+        font-size: 0.9rem;
+        font-weight: bold;
+        color: white;
+    }
+    .status-desired { background-color: #f59e0b; } /* Amarillo */
+    .status-reading { background-color: #3b82f6; } /* Azul */
+    .status-read { background-color: #8b5cf6; }    /* Púrpura */
+
+    /* Estructura de carpetas */
+    .folder-structure {
+        background: #2d1b33;
+        color: #dcb5ff;
+        padding: 20px;
+        border-radius: 10px;
+        font-family: monospace;
+        font-size: 0.9rem;
+        overflow-x: auto;
+        margin-top: 20px;
+    }
+
+    .btn-container {
+        text-align: center;
+        margin-top: 50px;
+        margin-bottom: 20px;
+    }
+    .media-item img {
+        width: 100%;
+        height: auto;           /* Permite que la imagen mantenga su proporción original */
+        max-height: 350px;      /* Altura máxima aceptable para que no ocupe demasiado */
+        object-fit: contain;    /* Muestra la imagen completa dentro del área sin recortar */
+        display: block;
+        transition: transform 0.3s ease;
+    }
+
+    .media-item:hover img {
+        transform: scale(1.02); /* Efecto de zoom muy suave */
+    }
+
+    .btn-primary {
+        background-color: #7d1f9c;
+        color: white;
+        padding: 15px 30px;
+        text-decoration: none;
+        font-weight: bold;
+        border-radius: 50px;
+        transition: all 0.3s;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        box-shadow: 0 4px 10px rgba(125, 31, 156, 0.3);
+    }
+
+    .btn-primary:hover {
+        background-color: #5a1e75;
+        transform: translateY(-3px);
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #3b0d47;
+      color: #e9c8ff;
+      margin-top: 60px;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>MI BIBLIOTECA</h1>
+    <h2>Gestión y Colección Personal</h2>
+    <a href="index.html">
+        <img src="favicon.png" alt="Icono Biblioteca" class="icon-header">
+    </a>
+  </header>
+
+  <main>
+      <!-- Imagen representativa del proyecto -->
+      <div class="portada">
+          <div style="padding: 40px; text-align: center; background: white; border-radius: 15px;">
+              <i data-lucide="library" size="80" color="#7d1f9c"></i>
+              <h2 style="margin-top: 10px; color: #30103a;">Visualización del Sistema</h2>
+              <p style="font-style: italic;"></p>
+          </div>
+      </div>
+      
+      <section>
+          <h2 class="section-title">Descripción del proyecto</h2>
+          <p>
+              Este sistema de gestión nació para solucionar el caos de las colecciones físicas. Desarrollado con <strong>PHP y MySQL</strong>, permite a los usuarios centralizar su biblioteca, organizando no solo los datos técnicos, sino también la experiencia personal de lectura.
+          </p>
+          <p>
+              El corazón del proyecto es su <strong>seguimiento de estado dinámico</strong>, que adapta los campos del formulario según la situación del libro:
+          </p>
+          <ul style="padding-left: 20px; margin-bottom: 20px; color: #4a2c52; list-style-type: none;">
+              <li style="margin-bottom: 12px;">
+                  <span class="badge-status status-desired">🟡 Deseado</span> Libros pendientes de compra, incluyendo control de precios.
+              </li>
+              <li style="margin-bottom: 12px;">
+                  <span class="badge-status status-reading">🔵 Leyendo</span> Progreso actual marcando el capítulo por el que vas.
+              </li>
+              <li style="margin-bottom: 12px;">
+                  <span class="badge-status status-read">🟣 Leído</span> Archivo histórico con valoración personal de 1 a 5 estrellas.
+              </li>
+          </ul>
+      </section>
+
+      <div class="feature-grid">
+          <div class="info-box">
+              <h3>✨ Funcionalidades Clave</h3>
+              <ul>
+                  <li><strong>CRUD Completo:</strong> Gestión total de libros, autores y categorías en la base de datos.</li>
+                  <li><strong>Sistema de Portadas:</strong> Carga y almacenamiento de imágenes en servidor local.</li>
+                  <li><strong>Feed Interactivo:</strong> Tarjetas visuales que cambian de color según el estado del libro.</li>
+                  <li><strong>Seguridad:</strong> Autenticación de usuarios con login y registro cifrado.</li>
+              </ul>
+          </div>
+
+          <div class="info-box">
+              <h3>💻 Tecnologías</h3>
+              <p>Stack robusto para una aplicación web tradicional:</p>
+              <div class="tech-badges">
+                  <span class="badge">PHP 7.4+</span>
+                  <span class="badge">MySQL (MySQLi)</span>
+                  <span class="badge">Tailwind CSS</span>
+                  <span class="badge">JavaScript</span>
+                  <span class="badge">Google Fonts (Inter/Quicksand)</span>
+              </div>
+              <p style="font-size: 0.9rem; margin-top: 15px; color: #666;">
+                  <em>Bonus:</em> Incluye un sistema de <strong>auto-migración</strong> que actualiza la estructura SQL automáticamente.
+              </p>
+          </div>
+      </div>
+
+      <section>
+          <h2 class="section-title">Estructura del Proyecto</h2>
+          <div class="folder-structure">
+              📁 Biblioteca/<br>
+              ├── 📁 database/ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Scripts SQL (db.sql)<br>
+              ├── 📁 includes/ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Conexión y componentes compartidos<br>
+              ├── 📁 php/ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Lógica de autenticación<br>
+              ├── 📁 uploads/ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Almacenamiento de portadas<br>
+              ├── feed.php &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Vista principal de la colección<br>
+              └── nuevo_libro.php # Formulario dinámico
+          </div>
+      </section>
+      <!-- ====================================================== -->
+      <!-- INICIO BLOQUE GALERÍA Y VIDEO (NUEVO APARTADO) -->
+      <!-- ====================================================== -->
+      <section>
+          <h2 class="section-title">Galería y Demostración</h2>
+          <p>
+              A continuación puedes ver el funcionamiento de la interfaz y la gestión de la colección en tiempo real.
+          </p>
+          
+          <div class="media-grid">
+              <div class="media-item">
+                  <img src="login.png" alt="Captura del Login">
+                  <p style="padding: 10px; font-size: 0.9rem; text-align: center; margin: 0;">Acceso Seguro</p>
+              </div>
+              <div class="media-item">
+                  <img src="crearcuenta.png" alt="Captura del Registro">
+                  <p style="padding: 10px; font-size: 0.9rem; text-align: center; margin: 0;">Acceso Seguro</p>
+              </div>
+              <div class="media-item">
+                  <img src="dashboard.png" alt="Captura del DashBoard">
+                  <p style="padding: 10px; font-size: 0.9rem; text-align: center; margin: 0;">Acceso Seguro</p>
+              </div>
+              <div class="media-item">
+                  <img src="feed.png" alt="Captura del Feed">
+                  <p style="padding: 10px; font-size: 0.9rem; text-align: center; margin: 0;">Vista Principal</p>
+              </div>
+              <div class="media-item">
+                  <img src="desplegable.png" alt="Captura del Desplegable">
+                  <p style="padding: 10px; font-size: 0.9rem; text-align: center; margin: 0;">Vista Principal</p>
+              </div>
+              <div class="media-item">
+                  <img src="nuevolibro1.png" alt="Captura del Nuevo Libro">
+                  <p style="padding: 10px; font-size: 0.9rem; text-align: center; margin: 0;">Vista Principal</p>
+              </div>
+              <div class="media-item">
+                  <img src="nuevolibro2.png" alt="Captura del Nuevo Libro2">
+                  <p style="padding: 10px; font-size: 0.9rem; text-align: center; margin: 0;">Vista Principal</p>
+              </div>
+          </div>
+
+          <h3 style="margin-top: 30px;"><i data-lucide="play" style="display:inline-block; vertical-align:middle; margin-right:5px;"></i> Video Tutorial</h3>
+          <div class="video-container">
+              <p>Video de como funciona proximamente</p>
+          </div>
+      </section>
+
+      <div class="btn-container">
+          <a href="https://github.com/rutsaisan/Proyecto-Biblioteca-Personal" class="btn-primary">
+              <i data-lucide="github"></i> Ver Código en GitHub
+          </a>
+      </div>
+
+  </main>
+  
+  <footer>
+      (c) Ruth Sainz Santos-Olmo  ---- rutsaisan.code@gmail.com
+  </footer>
+
+  <script>
+    // Inicializar iconos
+    lucide.createIcons();
+  </script>
+</body>
+</html>
