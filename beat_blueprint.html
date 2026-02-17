@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Beat Blueprint — The Coreographic</title>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Google Fonts para mantener la identidad visual del primer portafolio -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Quicksand:wght@300;500;700&display=swap" rel="stylesheet">
+  
+  <style>
+    /* --- Estilos Generales (Inspirados en la estética de Mi Biblioteca) --- */
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: #f7e9ff; /* Fondo lavanda claro original */
+      color: #30103a;      /* Texto púrpura oscuro original */
+    }
+
+    h1, h2, h3, .quicksand {
+        font-family: 'Quicksand', sans-serif;
+    }
+
+    /* --- Header --- */
+    header {
+        /* Degradado púrpura con imagen de fondo */
+        background: linear-gradient(to bottom, rgba(125, 31, 156, 0.6), rgba(48, 16, 58, 0.85)), 
+                    url('Beat_Blueprint.png'); /* Imagen representativa de arte/danza */
+        background-color: #30103a;
+        background-size: cover;
+        background-position: center;
+        color: white;
+        padding: 80px 20px;
+        text-align: center;
+        position: relative;
+        box-shadow: 0 4px 15px rgba(48, 16, 58, 0.2);
+    }
+
+    header h1 {
+        margin: 0;
+        font-size: 3.5rem;
+        font-weight: bold;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        text-shadow: 2px 2px 4px rgba(48, 16, 58, 0.8), 0 0 20px rgba(176, 76, 214, 0.6);
+    }
+
+    header h2 {
+      margin-top: 15px;
+      font-size: 1.4rem;
+      font-weight: 300;
+      opacity: 0.95;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    }
+
+    .icon-header {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 55px;
+      height: 55px;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+    }
+
+    /* --- Contenido Principal --- */
+    main {
+      max-width: 900px;
+      margin: auto;
+      padding: 30px;
+    }
+    
+    .portada-box {
+        width: 100%;
+        max-width: 800px;
+        margin: 0 auto 40px auto;
+        padding: 40px;
+        text-align: center;
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0 10px 25px rgba(48, 16, 58, 0.1);
+        border: 1px solid #ebd4ff;
+    }
+
+    h2.section-title {
+        color: #5a1e75;
+        border-bottom: 2px solid #dcb5ff;
+        padding-bottom: 10px;
+        margin-top: 40px;
+        font-size: 1.8rem;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    h3 {
+        color: #7d1f9c;
+        margin-top: 0;
+        font-size: 1.3rem;
+        margin-bottom: 15px;
+    }
+
+    p {
+        line-height: 1.7;
+        font-size: 1.1rem;
+        margin-bottom: 20px;
+        color: #4a2c52;
+    }
+
+    /* Grid de Pilares y Características */
+    .feature-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+        margin-top: 30px;
+    }
+
+    @media (min-width: 768px) {
+        .feature-grid {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+
+    .info-box {
+        background: white;
+        padding: 25px;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(48, 16, 58, 0.05);
+        border: 1px solid #ebd4ff;
+        transition: transform 0.2s;
+    }
+
+    .info-box:hover {
+        transform: translateY(-3px);
+    }
+
+    .info-box ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .info-box li {
+        margin-bottom: 12px;
+        padding-left: 28px;
+        position: relative;
+        line-height: 1.5;
+    }
+
+    .info-box li::before {
+        content: "✨";
+        position: absolute;
+        left: 0;
+        font-size: 1rem;
+    }
+
+    /* Badges de Estado (adaptados de los originales) */
+    .pilar-badge {
+        display: inline-block;
+        padding: 5px 12px;
+        border-radius: 6px;
+        font-size: 0.9rem;
+        font-weight: bold;
+        color: white;
+        margin-right: 5px;
+    }
+    .bg-canvas { background-color: #8b5cf6; } /* Púrpura */
+    .bg-wiki { background-color: #3b82f6; }   /* Azul */
+    .bg-music { background-color: #f59e0b; }  /* Dorado */
+    .bg-video { background-color: #ec4899; }  /* Rosa */
+
+    /* Badges Tecnológicos */
+    .tech-badges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 15px;
+    }
+
+    .badge {
+        background-color: #f0dbff;
+        color: #5a1e75;
+        padding: 5px 12px;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        font-weight: bold;
+        border: 1px solid #dcb5ff;
+    }
+
+    /* Estructura de carpetas (estilo oscuro para contraste) */
+    .folder-structure {
+        background: #2d1b33;
+        color: #dcb5ff;
+        padding: 20px;
+        border-radius: 10px;
+        font-family: monospace;
+        font-size: 0.9rem;
+        overflow-x: auto;
+        margin-top: 20px;
+        border: 1px solid #4a2c52;
+    }
+
+    /* Galería */
+    .media-item img {
+        width: 100%;
+        height: auto;           /* Permite que la imagen mantenga su proporción original */
+        max-height: 350px;      /* Altura máxima aceptable para que no ocupe demasiado */
+        object-fit: contain;    /* Muestra la imagen completa dentro del área sin recortar */
+        display: block;
+        transition: transform 0.3s ease;
+    }
+
+    .media-item:hover img {
+        transform: scale(1.02); /* Efecto de zoom muy suave */
+    }
+
+    /* Botón Principal */
+    .btn-container {
+        text-align: center;
+        margin-top: 50px;
+        margin-bottom: 20px;
+    }
+
+    .btn-primary {
+        background-color: #7d1f9c;
+        color: white;
+        padding: 15px 30px;
+        text-decoration: none;
+        font-weight: bold;
+        border-radius: 50px;
+        transition: all 0.3s;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        box-shadow: 0 4px 10px rgba(125, 31, 156, 0.3);
+    }
+
+    .btn-primary:hover {
+        background-color: #5a1e75;
+        transform: translateY(-3px);
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      background: #3b0d47;
+      color: #e9c8ff;
+      margin-top: 60px;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>BEAT BLUEPRINT</h1>
+    <h2>The Coreographic • Gestión Coreográfica Integral</h2>
+    <a href="index.html">
+        <img src="favicon.png" alt="Icono Beat Blueprint" class="icon-header" onerror="this.src='https://cdn-icons-png.flaticon.com/512/3844/3844724.png'">
+    </a>
+  </header>
+
+  <main>
+      <!-- Portada representativa -->
+      <div class="portada-box">
+          <i data-lucide="zap" size="70" color="#7d1f9c"></i>
+          <h2 style="margin-top: 15px; color: #30103a;">Optimización del Flujo Creativo</h2>
+          <p style="font-style: italic; font-size: 1rem;">Centralizando la danza urbana desde el código.</p>
+      </div>
+      
+      <section>
+          <h2 class="section-title"><i data-lucide="info"></i> Descripción del Proyecto</h2>
+          <p>
+              <strong>Beat Blueprint</strong> nace de la necesidad de digitalizar el caos creativo en la danza urbana. Es una plataforma diseñada para coreógrafos y directores que permite planificar, enseñar y archivar material artístico en un solo lugar.
+          </p>
+          <p>
+              El sistema se basa en cuatro pilares fundamentales para el montaje de un show:
+          </p>
+          <ul style="padding-left: 0; margin-bottom: 30px; list-style-type: none;">
+              <li style="margin-bottom: 15px;">
+                  <span class="pilar-badge bg-canvas">🎨 Canvas</span> 
+                  <strong>Escenario Virtual:</strong> Diseño de formaciones tácticas en <code>posiciones.php</code>.
+              </li>
+              <li style="margin-bottom: 15px;">
+                  <span class="pilar-badge bg-wiki">📘 Wiki</span> 
+                  <strong>Diccionario de Pasos:</strong> Base de datos técnica categorizada en <code>wiki.php</code>.
+              </li>
+              <li style="margin-bottom: 15px;">
+                  <span class="pilar-badge bg-music">🎵 Música</span> 
+                  <strong>Gestor de Audio:</strong> Control de pistas y playlists en <code>musica.php</code>.
+              </li>
+              <li style="margin-bottom: 15px;">
+                  <span class="pilar-badge bg-video">🎬 Vidioteca</span> 
+                  <strong>Repositorio Visual:</strong> Archivo de ensayos y referencias en <code>vidioteca.php</code>.
+              </li>
+          </ul>
+      </section>
+
+      <div class="feature-grid">
+          <div class="info-box">
+              <h3>🚀 Funcionalidades Clave</h3>
+              <ul>
+                  <li><strong>Dashboard Dinámico:</strong> Acceso rápido a todos los módulos post-autenticación.</li>
+                  <li><strong>Subida Asíncrona:</strong> Uso de Fetch API para cargar música y vídeos sin recargar la página.</li>
+                  <li><strong>Seguridad:</strong> Sistema de registro con validaciones de longitud y cifrado.</li>
+                  <li><strong>Estandarización:</strong> Base de datos para unificar el vocabulario técnico de la academia.</li>
+              </ul>
+          </div>
+
+          <div class="info-box">
+              <h3>🛠️ Stack Tecnológico</h3>
+              <p>Desarrollo robusto con tecnologías web tradicionales:</p>
+              <div class="tech-badges">
+                  <span class="badge">PHP (Backend)</span>
+                  <span class="badge">MySQL</span>
+                  <span class="badge">Tailwind CSS</span>
+                  <span class="badge">JavaScript</span>
+                  <span class="badge">HTML5 Canvas</span>
+              </div>
+              <p style="font-size: 0.9rem; margin-top: 15px; color: #666;">
+                  <em>Arquitectura:</em> Separación clara entre lógica de negocios (php/) y componentes (includes/).
+              </p>
+          </div>
+      </div>
+
+      <section>
+          <h2 class="section-title"><i data-lucide="folder-tree"></i> Estructura del Repositorio</h2>
+          <div class="folder-structure">
+              📁 rutsaisan-proyecto-beatblueprint/<br>
+                &nbsp;&nbsp;├── 📁 assets/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Estilos CSS (estilo.css) y recursos visuales<br>
+                &nbsp;&nbsp;├── 📁 database/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Esquema y scripts de base de datos MySQL (db.sql)<br>
+                &nbsp;&nbsp;├── 📁 includes/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Archivos de configuración y conexión (config.php)<br>
+                &nbsp;&nbsp;├── 📁 php/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Controladores backend (Login, Registro, Subidas)<br>
+                &nbsp;&nbsp;├── 📄 index.php&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Página de acceso (Login)<br>
+                &nbsp;&nbsp;├── 📄 register.html&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Interfaz de creación de cuenta<br>
+                &nbsp;&nbsp;├── 📄 feed.php&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Centro de control y dashboard del usuario<br>
+                &nbsp;&nbsp;├── 📄 posiciones.php&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Canvas interactivo: Diseño de formaciones<br>
+                &nbsp;&nbsp;├── 📄 wiki.php&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Wiki Pasos: Base de datos técnica de baile<br>
+                &nbsp;&nbsp;├── 📄 musica.php&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Gestor de pistas de audio y ensayos<br>
+                &nbsp;&nbsp;├── 📄 vidioteca.php&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Biblioteca de referencias visuales<br>
+                &nbsp;&nbsp;└── 📄 README.md&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Documentación técnica del proyecto<br>
+          </div>
+      </section>
+
+      <section>
+          <h2 class="section-title"><i data-lucide="layout"></i> Galería del Sistema</h2>
+          <div class="media-grid">
+              <div class="media-item">
+                  <img src="Capturas proyectos/Beat Blueprint/Login.png" alt="Login">
+                  <p style="padding: 10px; font-size: 0.9rem; text-align: center; margin: 0;">Login Seguro</p>
+              </div>
+              <div class="media-item">
+                  <img src="Capturas proyectos/Beat Blueprint/registro.png" alt="Registro">
+                  <p style="padding: 10px; font-size: 0.9rem; text-align: center; margin: 0;">Registrarse</p>
+              </div>
+              <div class="media-item">
+                  <img src="Capturas proyectos/Beat Blueprint/Feed.png" alt="Captura de Feed">
+                  <p style="padding: 10px; font-size: 0.9rem; text-align: center; margin: 0;">Pagina Principal</p>
+              </div>
+              <div class="media-item">
+                  <img src="Capturas proyectos/Beat Blueprint/Musica.png" alt="Captura de Música">
+                  <p style="padding: 10px; font-size: 0.9rem; text-align: center; margin: 0;">Módulo de Música</p>
+              </div>
+              <div class="media-item">
+                  <img src="Capturas proyectos/Beat Blueprint/Videoteca.png" alt="Captura de Videos">
+                  <p style="padding: 10px; font-size: 0.9rem; text-align: center; margin: 0;">Biblioteca de Videos</p>
+              </div>
+              <div class="media-item">
+                  <img src="Capturas proyectos/Beat Blueprint/Posiciones.png" alt="Captura de Posiciones">
+                  <p style="padding: 10px; font-size: 0.9rem; text-align: center; margin: 0;">Lógica de Posiciones</p>
+              </div>
+              <div class="media-item">
+                  <img src="Capturas proyectos/Beat Blueprint/Wiki1.png" alt="Captura de Wiki">
+                  <p style="padding: 10px; font-size: 0.9rem; text-align: center; margin: 0;">Wiki Técnica</p>
+              </div>
+              <div class="media-item">
+                  <img src="Capturas proyectos/Beat Blueprint/Wiki2.png" alt="Captura de Wiki">
+                  <p style="padding: 10px; font-size: 0.9rem; text-align: center; margin: 0;">Wiki Técnica</p>
+              </div>
+          </div>
+      </section>
+      <h3 style="margin-top: 30px;"><i data-lucide="play" style="display:inline-block; vertical-align:middle; margin-right:5px;"></i> Video Tutorial</h3>
+          <div class="video-container">
+              <p>Video de como funciona proximamente</p>
+          </div>
+      </section>
+
+
+      <div class="btn-container">
+          <a href="https://github.com/rutsaisan/Proyecto-BeatBlueprint" class="btn-primary" target="_blank">
+              <i data-lucide="github"></i> Ver Código en GitHub
+          </a>
+      </div>
+
+  </main>
+  
+  <footer>
+      Beat Blueprint — De la idea al escenario, sin perder el ritmo.<br>
+      (c) Ruth Sainz Santos-Olmo — rutsaisan.code@gmail.com
+  </footer>
+
+  <script>
+    // Inicializar iconos de Lucide
+    lucide.createIcons();
+  </script>
+</body>
+</html>
