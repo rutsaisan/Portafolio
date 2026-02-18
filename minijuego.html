@@ -255,6 +255,35 @@
             transform: translateY(8px);
             box-shadow: 0 0px 0px #4a1d61;
         }
+        :root {
+      --bg-body: #f7e9ff;
+      --text-main: #30103a;
+      --card-bg: rgba(125, 31, 156, 0.05);
+      --border-card: #e9c8ff;
+    }
+
+    body.dark-mode {
+      --bg-body: #0d0211;
+      --text-main: #f1e4ff;
+      --card-bg: #1a0822;
+      --border-card: #3b0d47;
+    }
+
+    body { background: var(--bg-body); color: var(--text-main); transition: background 0.4s; }
+    .logic-card, .image-card { background: var(--card-bg) !important; border-color: var(--border-card) !important; }
+    p { color: var(--text-main); opacity: 0.9; }
+
+    .header-controls {
+      position: absolute; top: 15px; right: 15px;
+      display: flex; flex-direction: column; align-items: center; gap: 12px;
+    }
+
+    .theme-toggle {
+      width: 35px; height: 35px; border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2); border: 1px solid rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(5px); cursor: pointer; display: flex; align-items: center; justify-content: center;
+      color: white; transition: all 0.3s ease;
+    }
 
         /* --- FOOTER --- */
         footer {
@@ -426,6 +455,23 @@
             
             terminal.scrollIntoView({ behavior: 'smooth' });
         }
+    </script>
+    <script>
+    const themeBtn = document.getElementById('themeBtn');
+    const themeIcon = document.getElementById('themeIcon');
+    const body = document.body;
+
+    if (localStorage.getItem('modo-oscuro') === 'activo') {
+      body.classList.add('dark-mode');
+      themeIcon.textContent = '☀️';
+    }
+
+    themeBtn.addEventListener('click', () => {
+      body.classList.toggle('dark-mode');
+      const esOscuro = body.classList.contains('dark-mode');
+      themeIcon.textContent = esOscuro ? '☀️' : '🌙';
+      localStorage.setItem('modo-oscuro', esOscuro ? 'activo' : 'inactivo');
+    });
     </script>
 </body>
 </html>

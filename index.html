@@ -6,14 +6,78 @@
   <link rel="icon" href="favicon.png" type="imagen/png">
   <title>Portafolio — Ruth Sainz Santos-Olmo</title>
   <style>
+    /* VARIABLES DE COLOR */
+    :root {
+      --bg-body: #f7e9ff;
+      --bg-article: #fff0ff;
+      --text-main: #30103a;
+      --text-p: #441a57;
+      --border-card: #e8c8ff;
+      --header-overlay: rgba(125, 31, 156, 0.4), rgba(48, 16, 58, 0.7);
+    }
+
+    body.dark-mode {
+      --bg-body: #0d0211;
+      --bg-article: #1a0822;
+      --text-main: #f1e4ff;
+      --text-p: #dcb5ff;
+      --border-card: #3b0d47;
+      --header-overlay: rgba(0, 0, 0, 0.7), rgba(48, 16, 58, 0.9);
+    }
+
     body {
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
-      background: #f7e9ff;
-      color: #30103a;
+      background: var(--bg-body);
+      color: var(--text-main);
+      transition: background 0.4s ease, color 0.4s ease;
     }
+
+    /* CONTENEDOR DE ICONOS EN HEADER (Esquina superior derecha) */
+    .header-controls {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      display: flex;
+      flex-direction: column; /* Apilados uno debajo del otro */
+      align-items: center;
+      gap: 12px; /* Espacio entre el favicon y el botón */
+    }
+
+    .icon-header {
+      width: 45px;
+      height: 45px;
+      transition: transform 0.3s;
+    }
+
+    .icon-header:hover {
+      transform: scale(1.1);
+    }
+
+    /* BOTÓN DE MODO OSCURO (Más pequeño y discreto) */
+    .theme-toggle {
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(5px); /* Efecto cristal elegante */
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      color: white;
+      transition: all 0.3s ease;
+    }
+
+    .theme-toggle:hover {
+      background: rgba(255, 255, 255, 0.4);
+      transform: rotate(15deg);
+    }
+
     header {
-        background: linear-gradient(to bottom, rgba(125, 31, 156, 0.4), rgba(48, 16, 58, 0.7)), url(IMAGEN_Portafolio.png);
+        background: linear-gradient(to bottom, var(--header-overlay)), url(IMAGEN_Portafolio.png);
         background-size: cover;
         background-position: 50% 20%;
         background-repeat: no-repeat;
@@ -21,25 +85,11 @@
         padding: 80px 20px;
         text-align: center;
         position: relative;
-        box-shadow: 0 4px 15px rgba(48, 16, 58, 0.2);
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
     }
-    header h1 {
-      margin: 0;
-      font-size: 2.4rem;
-    }
-    header h2 {
-      margin-top: 6px;
-      font-weight: 300;
-      opacity: 0.9;
-    }
-    /* Icono en header */
-    .icon-header {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      width: 50px;
-      height: 50px;
-    }
+
+    header h1 { margin: 0; font-size: 2.4rem; }
+    header h2 { margin-top: 6px; font-weight: 300; opacity: 0.9; }
 
     main {
       max-width: 1200px;
@@ -51,35 +101,42 @@
     }
 
     article {
-      background: #fff0ff;
+      background: var(--bg-article);
       border-radius: 14px;
-      box-shadow: 0 4px 20px rgba(140, 0, 150, 0.18);
+      box-shadow: 0 4px 20px rgba(140, 0, 150, 0.12);
       overflow: hidden;
-      transition: transform .25s, box-shadow .25s;
-      border: 2px solid #e8c8ff;
+      transition: all .25s ease;
+      border: 2px solid var(--border-card);
       text-align: center;
     }
+
     article:hover {
       transform: translateY(-6px);
-      box-shadow: 0 10px 28px rgba(110, 0, 130, 0.28);
+      box-shadow: 0 10px 28px rgba(110, 0, 130, 0.25);
       border-color: #d8a9ff;
     }
+
     article img {
       width: 100%;
       height: 180px;
       object-fit: cover;
-      border-bottom: 2px solid #f0d6ff;
+      border-bottom: 2px solid var(--border-card);
     }
+
     article h3 {
       margin: 16px;
       font-size: 1.3rem;
-      color: #5a0b7d;
+      color: #8c1bd1;
     }
+    
+    body.dark-mode article h3 { color: #dcb5ff; }
+
     article p {
       margin: 0 16px 16px;
-      color: #441a57;
+      color: var(--text-p);
       line-height: 1.5;
     }
+
     article a {
       display: inline-block;
       margin: 0 16px 20px;
@@ -91,69 +148,103 @@
       font-weight: bold;
       transition: background .2s;
     }
-    article a:hover {
-      background: #6b129f;
-    }
+
+    article a:hover { background: #6b129f; }
 
     footer {
       text-align: center;
       padding: 20px;
-      background: #3b0d47;
+      background: #1a0822;
       color: #e9c8ff;
       margin-top: 40px;
-      font-size: 0.9rem;
+      font-size: 0.8rem;
     }
   </style>
 </head>
 <body>
+
   <header>
+    <div class="header-controls">
+      <a href="https://rutsaisan.github.io/Curriculum/" title="Ver Curriculum"> 
+        <img src="favicon.png" alt="Icono" class="icon-header">
+      </a>
+      <button class="theme-toggle" id="themeBtn" title="Cambiar modo">
+        <span id="themeIcon">🌙</span>
+      </button>
+    </div>
+
     <h1>Ruth Sainz Santos-Olmo</h1>
     <h2>Portafolio Web</h2>
-    <a href="https://rutsaisan.github.io/Curriculum/"> <img src="favicon.png" alt="Icono" class="icon-header"></a>
   </header>
 
   <main>
     <article>
       <img src="Beat_Blueprint.png" alt="Imagen del proyecto">
-      <h3>Beat Blueprint </h3>
-      <p>Beat Blueprint, se trata de una aplicacion que mezcla mis dos hobbies, la programacion y el baile. Esta aplicacion va dedicada  abailarine sy coreografos y trata de juntar lo basico que necesita un bailarin como e sla musica sus ensayos la sposiciones y algunos pasos basicos en una unica web para facilitar el proceso de creacion de coreografias.</p>
+      <h3>Beat Blueprint</h3>
+      <p>Mezcla de programación y baile para ayudar a coreógrafos a organizar música y pasos.</p>
       <a href="beat_blueprint.html">Saber más</a>
     </article>
     <article>
       <img src="biblioteca_personal.jpg" alt="Imagen del proyecto">
-      <h3>Biblioteca Personal </h3>
-      <p>Este es un sistema de gestión de biblioteca personal desarrollado en PHP y MySQL. Permite a los usuarios llevar un registro detallado de sus libros, organizándolos por estado de lectura y almacenando información técnica y personal sobre cada obra.</p>
+      <h3>Biblioteca Personal</h3>
+      <p>Gestión de biblioteca en PHP y MySQL. Organiza tus libros por estado e información técnica.</p>
       <a href="biblioteca_personal.html">Saber más</a>
     </article>
     <article>
       <img src="Vibe_Check.png" alt="Imagen del proyecto">
       <h3>SEMÁFORO DE LAS RELACIONES</h3>
-      <p>Es una presentación interactiva con minijuego incluido que enseña a identificar comportamientos sanos (verdes), dudosos (amarillos) y tóxicos (rojos) en las relaciones de pareja (aunque tambien vale para amistades).</p>
+      <p>Minijuego interactivo para identificar comportamientos en las relaciones.</p>
       <a href="vibechek.html">Saber más</a>
     </article>
     <article>
       <img src="minijuego2.png" alt="Imagen del proyecto">
-      <h3>MiniJuego </h3>
-      <p>Este e sun breve juego que hemos realizado en clase. El juego yo lo propuse en que consitiera en una maga que debe vencer a una secta y depues al jefe. Es un juego sencillo y rapido de esquivar y disparar.</p>
+      <h3>MiniJuego</h3>
+      <p>Acción rápida: una maga contra una secta peligrosa.</p>
       <a href="minijuego.html">Saber más</a>
     </article>
     <article>
       <img src="Duelo_Magos.png" alt="Imagen del proyecto">
       <h3>DUELO MAGOS</h3>
-      <p>Un pequeño programa interactivo en Python que clasifica a un mago según su edad, calcula su poder base y simula un duelo mágico en dos turnos, reduciendo la energía de su escudo mediante distintos hechizos. Incluye validación de entrada, control de errores y uso de funciones, condicionales y bucles.</p>
+      <p>Simulador en Python que gestiona duelos mágicos estratégicos por turnos.</p>
       <a href="duelomagos.html">Saber más</a>
     </article>
     <article>
       <img src="Duelo_dragones.jpg" alt="Imagen del proyecto">
       <h3>DUELO DRAGONES</h3>
-      <p>Un simulador de texto en Python donde registras dos dragones, los entrenas durante tres días para mejorar sus estadísticas según su edad y finalmente los enfrentas en un duelo automático por turnos hasta que uno cae derrotado.</p>
+      <p>Entrena y enfrenta dragones en un combate automático basado en estadísticas.</p>
       <a href="duelodragones.html">Saber más</a>
     </article>
-    
   </main>
 
   <footer>
-    (c) Ruth Sainz Santos-Olmo  ---- rutsaisan.code@gmail.com
+    (c) 2026 Ruth Sainz Santos-Olmo — rutsaisan.code@gmail.com
   </footer>
+
+  <script>
+    const themeBtn = document.getElementById('themeBtn');
+    const themeIcon = document.getElementById('themeIcon');
+    const body = document.body;
+
+    // Función para aplicar el tema al cargar
+    function aplicarTema() {
+      const temaGuardado = localStorage.getItem('modo-oscuro');
+      if (temaGuardado === 'activo') {
+        body.classList.add('dark-mode');
+        themeIcon.textContent = '☀️';
+      }
+    }
+    aplicarTema();
+
+    themeBtn.addEventListener('click', () => {
+      body.classList.toggle('dark-mode');
+      if (body.classList.contains('dark-mode')) {
+        themeIcon.textContent = '☀️';
+        localStorage.setItem('modo-oscuro', 'activo');
+      } else {
+        themeIcon.textContent = '🌙';
+        localStorage.setItem('modo-oscuro', 'inactivo');
+      }
+    });
+  </script>
 </body>
 </html>

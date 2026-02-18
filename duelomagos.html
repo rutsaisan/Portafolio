@@ -199,6 +199,34 @@
         width: 100%;
         outline: none;
     }
+    :root {
+      --bg-body: #f7e9ff;
+      --text-main: #30103a;
+      --bg-console: #1a0524;
+      --border-color: #4a1d61;
+    }
+
+    body.dark-mode {
+      --bg-body: #0d0211;
+      --text-main: #f1e4ff;
+      --bg-console: #000000;
+      --border-color: #8c1bd1;
+    }
+
+    body { background: var(--bg-body); color: var(--text-main); transition: background 0.4s; }
+    .console-window { background-color: var(--bg-console) !important; border-color: var(--border-color) !important; }
+
+    .header-controls {
+      position: absolute; top: 15px; right: 15px;
+      display: flex; flex-direction: column; align-items: center; gap: 12px;
+    }
+
+    .theme-toggle {
+      width: 35px; height: 35px; border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2); border: 1px solid rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(5px); cursor: pointer; display: flex; align-items: center; justify-content: center;
+      color: white; transition: all 0.3s ease;
+    }
 
     /* --- FOOTER --- */
     footer {
@@ -454,6 +482,23 @@ for turno in range(1, 3):
           terminalContent.insertBefore(div, inputContainer);
           terminalContent.scrollTop = terminalContent.scrollHeight;
       }
+</script>
+<script>
+    const themeBtn = document.getElementById('themeBtn');
+    const themeIcon = document.getElementById('themeIcon');
+    const body = document.body;
+
+    if (localStorage.getItem('modo-oscuro') === 'activo') {
+      body.classList.add('dark-mode');
+      themeIcon.textContent = '☀️';
+    }
+
+    themeBtn.addEventListener('click', () => {
+      body.classList.toggle('dark-mode');
+      const esOscuro = body.classList.contains('dark-mode');
+      themeIcon.textContent = esOscuro ? '☀️' : '🌙';
+      localStorage.setItem('modo-oscuro', esOscuro ? 'activo' : 'inactivo');
+    });
 </script>
 </body>
 </html>

@@ -114,6 +114,32 @@
       font-family: monospace;
       opacity: 0.8;
     }
+    :root {
+      --bg-body: #f7e9ff;
+      --text-main: #30103a;
+      --bg-console: #1a0524;
+    }
+
+    body.dark-mode {
+      --bg-body: #0d0211;
+      --text-main: #f1e4ff;
+      --bg-console: #000000;
+    }
+
+    body { background: var(--bg-body); color: var(--text-main); transition: background 0.4s; }
+    .console-window { background-color: var(--bg-console) !important; }
+
+    .header-controls {
+      position: absolute; top: 15px; right: 15px;
+      display: flex; flex-direction: column; align-items: center; gap: 12px;
+    }
+
+    .theme-toggle {
+      width: 35px; height: 35px; border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2); border: 1px solid rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(5px); cursor: pointer; display: flex; align-items: center; justify-content: center;
+      color: white; transition: all 0.3s ease;
+    }
 
     /* Botón Ejecutar */
     .run-btn {
@@ -606,5 +632,22 @@ else:
           terminalContent.scrollTop = terminalContent.scrollHeight;
       }
   </script>
+  <script>
+    const themeBtn = document.getElementById('themeBtn');
+    const themeIcon = document.getElementById('themeIcon');
+    const body = document.body;
+
+    if (localStorage.getItem('modo-oscuro') === 'activo') {
+      body.classList.add('dark-mode');
+      themeIcon.textContent = '☀️';
+    }
+
+    themeBtn.addEventListener('click', () => {
+      body.classList.toggle('dark-mode');
+      const esOscuro = body.classList.contains('dark-mode');
+      themeIcon.textContent = esOscuro ? '☀️' : '🌙';
+      localStorage.setItem('modo-oscuro', esOscuro ? 'activo' : 'inactivo');
+    });
+</script>
 </body>
 </html>
