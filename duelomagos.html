@@ -199,6 +199,30 @@
         width: 100%;
         outline: none;
     }
+    .btn-container {
+        text-align: center;
+        margin-top: 50px;
+        margin-bottom: 20px;
+    }
+
+    .btn-primary {
+        background-color: #7d1f9c;
+        color: white;
+        padding: 15px 30px;
+        text-decoration: none;
+        font-weight: bold;
+        border-radius: 50px;
+        transition: background-color 0.3s, transform 0.2s;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        box-shadow: 0 4px 10px rgba(125, 31, 156, 0.3);
+    }
+
+    .btn-primary:hover {
+        background-color: #5a1e75;
+        transform: translateY(-3px);
+    }
     :root {
       --bg-body: #f7e9ff;
       --text-main: #30103a;
@@ -343,6 +367,16 @@ for turno in range(1, 3):
     </div>
 </div>
         </div>
+      </div>
+      <h2>Mejora</h2>
+      <p>
+         Esta es una version gráfica del juego que mejore con ayuda de la IA para generar algunas imagenes y hacerlo de forma más visual y jugable:
+      </p>
+
+      <div class="btn-container">
+          <a href="https://rutsaisan.github.io/Juego-Magos/" class="btn-primary">
+              <i data-lucide="play-circle"></i> Ver Juego
+          </a>
       </div>
       </main>
   
