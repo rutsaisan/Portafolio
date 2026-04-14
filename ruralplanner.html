@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="img/favicon.png" type="image/png">
+  <title>Rural Planner — Organización Grupal</title>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Quicksand:wght@300;500;700&display=swap" rel="stylesheet">
+  
+  <style>
+    /* --- Estilos Generales --- */
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: #f7e9ff;
+      color: #30103a;
+      transition: background 0.4s ease;
+    }
+
+    h1, h2, h3, .quicksand { font-family: 'Quicksand', sans-serif; }
+
+    /* --- Header --- */
+    header {
+        background: linear-gradient(to bottom, rgba(45, 90, 39, 0.7), rgba(48, 16, 58, 0.9)), 
+                    url('https://images.unsplash.com/photo-1449158743715-0a90ebb6d2d8?auto=format&fit=crop&w=1200&q=80'); 
+        background-color: #1a2e18;
+        background-size: cover;
+        background-position: center;
+        color: white;
+        padding: 80px 20px;
+        text-align: center;
+        position: relative;
+        box-shadow: 0 4px 15px rgba(48, 16, 58, 0.2);
+    }
+
+    header h1 {
+        margin: 0;
+        font-size: 3.5rem;
+        font-weight: bold;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5), 0 0 20px rgba(74, 206, 173, 0.4);
+    }
+
+    header h2 {
+      margin-top: 15px;
+      font-size: 1.4rem;
+      font-weight: 300;
+      opacity: 0.95;
+    }
+
+    .icon-header {
+      position: absolute; top: 20px; right: 20px;
+      width: 55px; height: 55px;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+    }
+
+    /* --- Contenido Principal --- */
+    main { max-width: 900px; margin: auto; padding: 30px; }
+    
+    .portada-box {
+        width: 100%; max-width: 800px;
+        margin: 0 auto 40px auto; padding: 40px;
+        text-align: center; background: white;
+        border-radius: 15px; box-shadow: 0 10px 25px rgba(48, 16, 58, 0.1);
+        border: 1px solid #ebd4ff;
+    }
+
+    h2.section-title {
+        color: #5a1e75; border-bottom: 2px solid #dcb5ff;
+        padding-bottom: 10px; margin-top: 40px;
+        font-size: 1.8rem; display: flex; align-items: center; gap: 12px;
+    }
+
+    h3 { color: #7d1f9c; margin-top: 0; font-size: 1.3rem; margin-bottom: 15px; }
+    p { line-height: 1.7; font-size: 1.1rem; margin-bottom: 20px; color: #4a2c52; }
+
+    /* Grid de Características */
+    .feature-grid {
+        display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px; margin-top: 30px;
+    }
+
+    .info-box {
+        background: white; padding: 25px; border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(48, 16, 58, 0.05); border: 1px solid #ebd4ff;
+        transition: transform 0.2s;
+    }
+
+    .info-box:hover { transform: translateY(-3px); }
+    .info-box ul { list-style: none; padding: 0; margin: 0; }
+    .info-box li { margin-bottom: 12px; padding-left: 28px; position: relative; }
+    .info-box li::before { content: "🌲"; position: absolute; left: 0; }
+
+    /* Collab Box */
+    .collab-box {
+        background: #fdfbf7; border-left: 5px solid #c5a059;
+        padding: 20px; border-radius: 8px; margin-top: 30px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+
+    /* Badges */
+    .pilar-badge {
+        display: inline-block; padding: 5px 12px; border-radius: 6px;
+        font-size: 0.9rem; font-weight: bold; color: white; margin-right: 5px;
+    }
+    .bg-house { background-color: #2d5a27; } 
+    .bg-cart { background-color: #c5a059; } 
+    .bg-car { background-color: #4b3621; } 
+    .bg-activity { background-color: #6a11cb; }
+
+    .tech-badges { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 15px; }
+    .badge {
+        background-color: #f0dbff; color: #5a1e75; padding: 5px 12px;
+        border-radius: 20px; font-size: 0.85rem; font-weight: bold; border: 1px solid #dcb5ff;
+    }
+
+    .folder-structure {
+        background: #1a2e18; color: #b7e4b2; padding: 20px;
+        border-radius: 10px; font-family: monospace; font-size: 0.9rem;
+        overflow-x: auto; margin-top: 20px; border: 1px solid #2d5a27;
+    }
+
+    /* Galería */
+    .media-grid {
+        display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px; margin-bottom: 40px;
+    }
+    .media-item {
+        background: white; border-radius: 12px; overflow: hidden;
+        border: 1px solid #ebd4ff; transition: all 0.3s ease;
+    }
+    .media-item img { width: 100%; height: 200px; object-fit: cover; display: block; }
+
+    .video-container {
+        width: 100%; max-width: 800px; margin: 30px auto;
+        background: #ffffff; padding: 10px; border-radius: 20px;
+        box-shadow: 0 15px 35px rgba(48, 16, 58, 0.2); border: 1px solid #ebd4ff;
+    }
+    .video-container video { width: 100%; border-radius: 12px; background: #000; }
+
+    .btn-container { text-align: center; margin: 50px 0; }
+    .btn-primary {
+        background-color: #2d5a27; color: white; padding: 15px 30px;
+        text-decoration: none; font-weight: bold; border-radius: 50px;
+        display: inline-flex; align-items: center; gap: 10px;
+        box-shadow: 0 4px 10px rgba(45, 90, 39, 0.3); transition: all 0.3s;
+    }
+    .btn-primary:hover { background-color: #1a2e18; transform: translateY(-3px); }
+
+    /* Dark Mode */
+    body.dark-mode { background: #0d0211; color: #f1e4ff; }
+    body.dark-mode .portada-box, body.dark-mode .info-box, body.dark-mode .media-item, body.dark-mode .video-container {
+      background: #1e0a26 !important; border-color: #3b0d47 !important;
+    }
+    body.dark-mode p { color: #dcb5ff; }
+
+    footer {
+      text-align: center; padding: 30px; background: #1a2e18;
+      color: #e9ffea; margin-top: 60px; font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>RURAL PLANNER</h1>
+    <h2>Organización de Escapadas • Gestión Grupal y Finanzas</h2>
+    <a href="index.html" title="Volver">
+        <img src="img/favicon.png" alt="Icono Biblioteca" class="icon-header">
+    </a>
+  </header>
+
+  <main>
+      <div class="portada-box">
+          <i data-lucide="map" size="70" color="#2d5a27"></i>
+          <h2 style="margin-top: 15px; color: #30103a;">El fin del caos en los viajes rurales</h2>
+          <p style="font-style: italic; font-size: 1rem;">Cuentas claras, amigos felices.</p>
+      </div>
+      
+      <section>
+          <h2 class="section-title"><i data-lucide="info"></i> Descripción del Proyecto</h2>
+          <p>
+              <strong>Rural Planner</strong> es una herramienta Full Stack diseñada para solventar los problemas típicos al organizar una salida grupal. Centraliza la toma de decisiones sobre el alojamiento, los gastos de comida y la logística de transporte.
+          </p>
+          <p>
+              El sistema automatiza el cálculo de costes "a escote", basándose en cuatro módulos integrados:
+          </p>
+          <ul style="padding-left: 0; margin-bottom: 30px; list-style-type: none;">
+              <li style="margin-bottom: 15px;">
+                  <span class="pilar-badge bg-house">🏡 Casas</span> 
+                  <strong>Ranking de Alojamiento:</strong> Votaciones en tiempo real para elegir la mejor opción.
+              </li>
+              <li style="margin-bottom: 15px;">
+                  <span class="pilar-badge bg-cart">🛒 Despensa</span> 
+                  <strong>Lista de la Compra:</strong> Gestión de productos y responsables de pago.
+              </li>
+              <li style="margin-bottom: 15px;">
+                  <span class="pilar-badge bg-car">🚗 Logística</span> 
+                  <strong>Calculadora de Transporte:</strong> Estimación de gastos por combustible, peajes o billetes.
+              </li>
+              <li style="margin-bottom: 15px;">
+                  <span class="pilar-badge bg-activity">🏹 Actividades</span> 
+                  <strong>Planes y Ocio:</strong> Propuestas de ocio con control de presupuesto personal.
+              </li>
+          </ul>
+      </section>
+
+      <div class="feature-grid">
+          <div class="info-box">
+              <h3>🚀 Funcionalidades Clave</h3>
+              <ul>
+                  <li><strong>Cálculo Automático:</strong> Divide el gasto total entre los asistentes registrados instantáneamente.</li>
+                  <li><strong>Panel Admin:</strong> Control absoluto de usuarios, borrado de propuestas y moderación.</li>
+                  <li><strong>Exportación PDF:</strong> Generación de informes (compactos o detallados) para compartir por WhatsApp.</li>
+                  <li><strong>Calendario de Disponibilidad:</strong> Mapa visual de fechas para encontrar el fin de semana perfecto.</li>
+              </ul>
+          </div>
+
+          <div class="info-box">
+              <h3>🛠️ Stack Tecnológico</h3>
+              <div class="tech-badges">
+                  <span class="badge">PHP 8.x</span>
+                  <span class="badge">MySQL (PDO)</span>
+                  <span class="badge">JavaScript (ES6)</span>
+                  <span class="badge">Tailwind & CSS Custom Props</span>
+                  <span class="badge">Local Storage</span>
+              </div>
+              <p style="font-size: 0.9rem; margin-top: 15px; color: #666;">
+                  <em>Arquitectura:</em> Modelo Vista-Controlador (MVC) simplificado con gestión de sesiones segura.
+              </p>
+          </div>
+      </div>
+
+      <div class="collab-box">
+        <h3>🤝 Colaboración</h3>
+        <p>Este proyecto ha sido desarrollado en conjunto con mi compañero <strong>Dani</strong>, y mi compañero <strong>Valentín</strong> trabajando mano a mano en la lógica de negocio y la integración de la base de datos.</p>
+        <a href="https://github.com/ElOrange12" target="_blank" style="color: #c5a059; font-weight: bold; text-decoration: none;">Ver perfil de Dani <i data-lucide="external-link" style="display:inline-block; width:14px;"></i></a>
+        <a href="https://github.com/Valentindg2506" target="_blank" style="color: #c5a059; font-weight: bold; text-decoration: none;">Ver perfil de Valentín <i data-lucide="external-link" style="display:inline-block; width:14px;"></i></a>
+      </div>
+
+      <section>
+          <h2 class="section-title"><i data-lucide="folder-tree"></i> Estructura del Proyecto</h2>
+          <div class="folder-structure">
+              📁 elorange12-rankingcasas/<br>
+              &nbsp;&nbsp;├── 📁 back/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Base de Datos SQL y Scripts<br>
+              &nbsp;&nbsp;└── 📁 front/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Aplicación Principal<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├── 📁 controladores/&nbsp;&nbsp;# Lógica de Login, Registro y CRUD<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├── 📁 inc/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Conexión PDO (bd.php)<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├── 📄 index.php&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Acceso y Autenticación<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├── 📄 exito.php&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Dashboard Principal de Gastos<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├── 📄 votaciones.php&nbsp;&nbsp;# Sistema de Voto de Casas<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└── 📄 admin.php&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Panel de Control de Administrador<br>
+          </div>
+      </section>
+
+      <section>
+          <h2 class="section-title"><i data-lucide="layout"></i> Galería de la Aplicación</h2>
+          <div class="media-grid">
+              <div class="media-item">
+                  <img src="Capturas Proyectos/Rural Planner/login.png" alt="Login Rural">
+                  <p style="padding: 10px; font-size: 0.9rem; text-align: center; margin: 0;">Acceso Seguro</p>
+              </div>
+              <div class="media-item">
+                  <img src="Capturas Proyectos/Rural Planner/dashboard.png" alt="Dashboard Gastos">
+                  <p style="padding: 10px; font-size: 0.9rem; text-align: center; margin: 0;">Pagina principal</p>
+              </div>
+              <div class="media-item">
+                  <img src="Capturas Proyectos/Rural Planner/dashboard2.png" alt="Dashboard Gastos">
+                  <p style="padding: 10px; font-size: 0.9rem; text-align: center; margin: 0;">Pagina principal</p>
+              </div>
+              <div class="media-item">
+                  <img src="Capturas Proyectos/Rural Planner/voto_casas.png" alt="Votación de Casas">
+                  <p style="padding: 10px; font-size: 0.9rem; text-align: center; margin: 0;">Ranking de Alojamiento</p>
+              </div>
+              <div class="media-item">
+                  <img src="Capturas Proyectos/Rural Planner/voto_casa2.png" alt="Votación de Casas">
+                  <p style="padding: 10px; font-size: 0.9rem; text-align: center; margin: 0;">Ranking de Alojamiento</p>
+              </div>
+              <div class="media-item">
+                  <img src="Capturas Proyectos/Rural Planner/transporte.png" alt="Votación de Casas">
+                  <p style="padding: 10px; font-size: 0.9rem; text-align: center; margin: 0;">Gestión transporte</p>
+              </div>
+              <div class="media-item">
+                  <img src="Capturas Proyectos/Rural Planner/compra.png" alt="Votación de Casas">
+                  <p style="padding: 10px; font-size: 0.9rem; text-align: center; margin: 0;">Lista Compra Común</p>
+              </div>
+              <div class="media-item">
+                  <img src="Capturas Proyectos/Rural Planner/actividades1.png" alt="Votación de Casas">
+                  <p style="padding: 10px; font-size: 0.9rem; text-align: center; margin: 0;">RLista Actividades</p>
+              </div>
+              <div class="media-item">
+                  <img src="Capturas Proyectos/Rural Planner/actividades2.png" alt="Votación de Casas">
+                  <p style="padding: 10px; font-size: 0.9rem; text-align: center; margin: 0;">RLista Actividades</p>
+              </div>
+              <div class="media-item">
+                  <img src="Capturas Proyectos/Rural Planner/fechas.png" alt="Calendario Disponibilidad">
+                  <p style="padding: 10px; font-size: 0.9rem; text-align: center; margin: 0;">Gestión de Fechas</p>
+              </div>
+          </div>
+      </section>
+
+      <h3><i data-lucide="play" style="display:inline-block; vertical-align:middle; margin-right:5px;"></i> Demo de Funcionamiento</h3>
+      <div class="video-container">
+            <video controls>
+                <source src="Capturas proyectos/Rural Planner/Video Project 2.mp4" type="video/mp4">
+                Tu navegador no soporta el formato de video.
+            </video>
+        </div>
+
+      <div class="btn-container">
+          <a href="https://github.com/ElOrange12/RankingCasas" class="btn-primary" target="_blank">
+              <i data-lucide="github"></i> Explorar Repositorio
+          </a>
+      </div>
+
+  </main>
+  
+  <footer>
+      Rural Planner — Organiza, vota y disfruta.<br>
+      (c) Ruth Sainz Santos-Olmo — rutsaisan.code@gmail.com
+  </footer>
+
+  <script>
+    lucide.createIcons();
+    // Lógica opcional de Dark Mode si quieres mantener el botón
+  </script>
+</body>
+</html>
