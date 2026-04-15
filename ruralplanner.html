@@ -316,6 +316,25 @@
       </div>
 
   </main>
+  <script>
+    
+    lucide.createIcons();
+    const themeBtn = document.getElementById('themeBtn');
+    const themeIcon = document.getElementById('themeIcon');
+    const body = document.body;
+
+    if (localStorage.getItem('modo-oscuro') === 'activo') {
+      body.classList.add('dark-mode');
+      themeIcon.textContent = '☀️';
+    }
+
+    themeBtn.addEventListener('click', () => {
+      body.classList.toggle('dark-mode');
+      const esOscuro = body.classList.contains('dark-mode');
+      themeIcon.textContent = esOscuro ? '☀️' : '🌙';
+      localStorage.setItem('modo-oscuro', esOscuro ? 'activo' : 'inactivo');
+    });
+  </script>
   
   <footer>
       Rural Planner — Organiza, vota y disfruta.<br>
