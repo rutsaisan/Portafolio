@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="img/favicon.png" type="imagen/png">
+    <title>SwellTracker Global — Surf y Olas</title>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Google Fonts para mantener la identidad visual -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Quicksand:wght@300;500;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* --- Estilos Generales (Inspirados en la estética de SwellTraker) --- */
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            background: #f0f9ff;
+            /* Fondo azul claro */
+            color: #0f172a;
+            /* Texto azul oscuro */
+        }
+
+        h1,
+        h2,
+        h3,
+        .quicksand {
+            font-family: 'Quicksand', sans-serif;
+        }
+
+        /* --- Header --- */
+        header {
+            /* Degradado azul con imagen de fondo */
+            background: linear-gradient(to bottom, rgba(14, 165, 233, 0.6), rgba(5, 10, 20, 0.85)),
+                url('img/SwellTraker.png');
+            /* Imagen representativa de surf */
+            background-color: #050a14;
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 4px 15px rgba(5, 10, 20, 0.2);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 3.5rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-shadow: 2px 2px 4px rgba(5, 10, 20, 0.8), 0 0 20px rgba(56, 189, 248, 0.6);
+        }
+
+        header h2 {
+            margin-top: 15px;
+            font-size: 1.4rem;
+            font-weight: 300;
+            opacity: 0.95;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .icon-header {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 55px;
+            height: 55px;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+        }
+
+        /* --- Contenido Principal --- */
+        main {
+            max-width: 900px;
+            margin: auto;
+            padding: 30px;
+        }
+
+        .portada-box {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto 40px auto;
+            padding: 40px;
+            text-align: center;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(5, 10, 20, 0.1);
+            border: 1px solid #bae6fd;
+        }
+
+        h2.section-title {
+            color: #0284c7;
+            border-bottom: 2px solid #7dd3fc;
+            padding-bottom: 10px;
+            margin-top: 40px;
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        h3 {
+            color: #0369a1;
+            margin-top: 0;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+
+        p {
+            line-height: 1.7;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            color: #1e293b;
+        }
+
+        /* Grid de Pilares y Características */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        @media (min-width: 768px) {
+            .feature-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .info-box {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(5, 10, 20, 0.05);
+            border: 1px solid #bae6fd;
+            transition: transform 0.2s;
+        }
+
+        .info-box:hover {
+            transform: translateY(-3px);
+        }
+
+        .info-box ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .info-box li {
+            margin-bottom: 12px;
+            padding-left: 28px;
+            position: relative;
+            line-height: 1.5;
+        }
+
+        .info-box li::before {
+            content: "✨";
+            position: absolute;
+            left: 0;
+            font-size: 1rem;
+        }
+
+        /* Badges de Estado */
+        .pilar-badge {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            color: white;
+            margin-right: 5px;
+        }
+
+        .bg-canvas {
+            background-color: #3b82f6;
+        }
+
+        /* Azul - Olas */
+        .bg-wiki {
+            background-color: #eab308;
+        }
+
+        /* Amarillo - Equipamiento */
+        .bg-music {
+            background-color: #10b981;
+        }
+
+        /* Verde - Tutoriales */
+        .bg-video {
+            background-color: #8b5cf6;
+        }
+
+        /* Púrpura - Juego */
+
+        /* Badges Tecnológicos */
+        .tech-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .badge {
+            background-color: #e0f2fe;
+            color: #0369a1;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            border: 1px solid #7dd3fc;
+        }
+
+        /* Estructura de carpetas */
+        .folder-structure {
+            background: #0f172a;
+            color: #7dd3fc;
+            padding: 20px;
+            border-radius: 10px;
+            font-family: monospace;
+            font-size: 0.9rem;
+            overflow-x: auto;
+            margin-top: 20px;
+            border: 1px solid #1e293b;
+        }
+
+        /* Galería */
+        .media-item img {
+            width: 100%;
+            height: auto;
+            max-height: 350px;
+            object-fit: contain;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .media-item:hover img {
+            transform: scale(1.02);
+        }
+
+        /* --- Estilos para el Video --- */
+        .video-container {
+            width: 100%;
+            max-width: 800px;
+            margin: 30px auto;
+            background: #ffffff;
+            padding: 10px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(5, 10, 20, 0.2);
+            border: 1px solid #bae6fd;
+            overflow: hidden;
+        }
+
+        .video-container video,
+        .video-container iframe {
+            width: 100%;
+            aspect-ratio: 16/9;
+            display: block;
+            border-radius: 12px;
+            border: none;
+            outline: none;
+            background: #000;
+        }
+
+        /* Ajustes para la galería de imágenes (Grid) */
+        .media-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .media-item {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #bae6fd;
+            transition: all 0.3s ease;
+        }
+
+        /* Botón Principal */
+        .btn-container {
+            text-align: center;
+            margin-top: 50px;
+            margin-bottom: 20px;
+        }
+
+        .btn-primary {
+            background-color: #0284c7;
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 50px;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 10px rgba(2, 132, 199, 0.3);
+        }
+
+        .btn-primary:hover {
+            background-color: #0369a1;
+            transform: translateY(-3px);
+        }
+
+        :root {
+            --bg-body: #f0f9ff;
+            --text-main: #0f172a;
+            --bg-box: white;
+            --text-p: #1e293b;
+            --border-color: #bae6fd;
+        }
+
+        body.dark-mode {
+            --bg-body: #050a14;
+            --text-main: #f1f5f9;
+            --bg-box: #0f172a;
+            --text-p: #cbd5e1;
+            --border-color: #1e293b;
+        }
+
+        body {
+            background: var(--bg-body);
+            color: var(--text-main);
+            transition: background 0.4s ease;
+        }
+
+        .portada-box,
+        .info-box,
+        .media-item,
+        .video-container {
+            background: var(--bg-box) !important;
+            border-color: var(--border-color) !important;
+        }
+
+        p {
+            color: var(--text-p);
+        }
+
+        .header-controls {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .theme-toggle {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(5px);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: #020617;
+            color: #7dd3fc;
+            margin-top: 60px;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="header-controls">
+            <button id="themeBtn" class="theme-toggle" title="Cambiar tema">
+                <span id="themeIcon">🌙</span>
+            </button>
+        </div>
+        <h1>SWELLTRACKER GLOBAL</h1>
+        <h2>El océano te espera • Condiciones, Tutoriales y Equipamiento</h2>
+        <a href="index.html" title="Volver">
+            <img src="img/favicon.png" alt="Icono SwellTraker" class="icon-header"
+                onerror="this.src='https://cdn-icons-png.flaticon.com/512/3844/3844724.png'">
+        </a>
+    </header>
+
+    <main>
+        <!-- Portada representativa -->
+        <div class="portada-box">
+            <i data-lucide="waves" size="70" color="#0ea5e9"></i>
+            <h2 style="margin-top: 15px; color: var(--text-main);">Si no puedes parar las olas, aprende a surfearlas.
+            </h2>
+            <p style="font-style: italic; font-size: 1rem;">Conectando surfistas con las mejores condiciones en todo el
+                mundo.</p>
+        </div>
+
+        <section>
+            <h2 class="section-title"><i data-lucide="info"></i> Descripción del Proyecto</h2>
+            <p>
+                <strong>SwellTracker Global</strong> es una aplicación web integral diseñada para amantes del surf.
+                Permite consultar las condiciones del mar en tiempo real, acceder a guías de equipamiento, aprender
+                nuevas técnicas a través de tutoriales e incluso disfrutar de un minijuego tematizado.
+            </p>
+            <p>
+                La plataforma se divide en cuatro secciones principales:
+            </p>
+            <ul style="padding-left: 0; margin-bottom: 30px; list-style-type: none;">
+                <li style="margin-bottom: 15px;">
+                    <span class="pilar-badge bg-canvas">🌊 Olas</span>
+                    <strong>Condiciones Reales:</strong> Tracker de mareas y oleajes por spots en <code>olas.php</code>.
+                </li>
+                <li style="margin-bottom: 15px;">
+                    <span class="pilar-badge bg-wiki">🏄 Equipamiento</span>
+                    <strong>Guías de Material:</strong> Recomendaciones y tipos de tablas en
+                    <code>equipamiento.php</code>.
+                </li>
+                <li style="margin-bottom: 15px;">
+                    <span class="pilar-badge bg-music">📘 Tutoriales</span>
+                    <strong>Aprende a Surfear:</strong> Lecciones y técnicas de surf detalladas en
+                    <code>tutoriales.php</code>.
+                </li>
+                <li style="margin-bottom: 15px;">
+                    <span class="pilar-badge bg-video">🎮 Juego</span>
+                    <strong>Minijuego:</strong> Entretenimiento interactivo de surf en <code>Juego.php</code>.
+                </li>
+            </ul>
+        </section>
+
+        <div class="feature-grid">
+            <div class="info-box">
+                <h3>🚀 Funcionalidades Clave</h3>
+                <ul>
+                    <li><strong>Dashboard Interactivo:</strong> Collage dinámico en la página de inicio que rota
+                        imágenes asíncronamente.</li>
+                    <li><strong>Información en Tiempo Real:</strong> Seguimiento de spots de surf y condiciones del mar
+                        a través de APIs.</li>
+                    <li><strong>Sistema de Autenticación:</strong> Inicio de sesión seguro y registro de usuarios.</li>
+                    <li><strong>Diseño Responsive:</strong> Interfaz adaptativa construida con Tailwind CSS y paleta de
+                        colores inmersiva.</li>
+                </ul>
+            </div>
+
+            <div class="info-box">
+                <h3>🛠️ Stack Tecnológico</h3>
+                <p>Desarrollo enfocado en rendimiento y diseño moderno:</p>
+                <div class="tech-badges">
+                    <span class="badge">PHP (Backend)</span>
+                    <span class="badge">MySQL</span>
+                    <span class="badge">Tailwind CSS</span>
+                    <span class="badge">JavaScript</span>
+                    <span class="badge">Fetch API</span>
+                </div>
+                <p style="font-size: 0.9rem; margin-top: 15px; color: #666;">
+                    <em>Arquitectura:</em> Aplicación web multipágina con componentes compartidos (navbars, auth) en la
+                    carpeta includes.
+                </p>
+            </div>
+        </div>
+
+        <section>
+            <h2 class="section-title"><i data-lucide="folder-tree"></i> Estructura del Repositorio</h2>
+            <div class="folder-structure">
+                📁 SwellTraker/<br>
+                &nbsp;&nbsp;├── 📁 api/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Endpoints para
+                obtención de datos de olas<br>
+                &nbsp;&nbsp;├── 📁 img/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Recursos visuales,
+                collage y logo<br>
+                &nbsp;&nbsp;├── 📁 inc/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Archivos de
+                configuración (auth.php, navbar.php)<br>
+                &nbsp;&nbsp;├── 📄 db.sql&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Esquema y scripts de base de
+                datos MySQL<br>
+                &nbsp;&nbsp;├── 📄 index.php&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Página de acceso (Login) y redirecciones<br>
+                &nbsp;&nbsp;├── 📄 registro.php&nbsp;&nbsp;# Interfaz de creación de cuenta segura<br>
+                &nbsp;&nbsp;├── 📄 inicio.php&nbsp;&nbsp;&nbsp;&nbsp;# Dashboard y collage interactivo de surf<br>
+                &nbsp;&nbsp;├── 📄 olas.php&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Tracker de condiciones de surf
+                globales<br>
+                &nbsp;&nbsp;├── 📄 equipamiento.php# Guía interactiva de tablas y neoprenos<br>
+                &nbsp;&nbsp;├── 📄 tutoriales.php# Lecciones técnicas y seguridad en el agua<br>
+                &nbsp;&nbsp;├── 📄 Juego.php&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Minijuego de surf de entretenimiento<br>
+                &nbsp;&nbsp;└── 📄 README.md&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Documentación del proyecto<br>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="section-title"><i data-lucide="layout"></i> Galería del Sistema</h2>
+            <div class="media-grid">
+                <div class="media-item">
+                    <img src="Capturas proyectos/SwellTraker/Login.png" alt="Login"
+                        onerror="this.src='img/capturas/SwellTraker/Login.png'">
+                    <p style="padding: 10px; font-size: 0.9rem; text-align: center; margin: 0;">Acceso Seguro</p>
+                </div>
+                <div class="media-item">
+                    <img src="Capturas proyectos/SwellTraker/register.png" alt="Registrarse">
+                    <p style="padding: 10px; font-size: 0.9rem; text-align: center; margin: 0;">Registro Seguro</p>
+                </div>
+                <div class="media-item">
+                    <img src="Capturas proyectos/SwellTraker/inicio.png" alt="Inicio">
+                    <p style="padding: 10px; font-size: 0.9rem; text-align: center; margin: 0;">Dashboard Interactivo
+                    </p>
+                </div>
+                <div class="media-item">
+                    <img src="Capturas proyectos/SwellTraker/Olasy Sports.png" alt="Condiciones de Olas">
+                    <p style="padding: 10px; font-size: 0.9rem; text-align: center; margin: 0;">Módulo de Olas</p>
+                </div>
+                <div class="media-item">
+                    <img src="Capturas proyectos/SwellTraker/MapaOlas.png" alt="Mapa de Olas">
+                    <p style="padding: 10px; font-size: 0.9rem; text-align: center; margin: 0;">Módulo de Olas</p>
+                </div>
+                <div class="media-item">
+                    <img src="Capturas proyectos/SwellTraker/Equipamiento.png" alt="Equipamiento">
+                    <p style="padding: 10px; font-size: 0.9rem; text-align: center; margin: 0;">Guía de Material</p>
+                </div>
+                <div class="media-item">
+                    <img src="Capturas proyectos/SwellTraker/Tutoriales.png" alt="Tutoriales">
+                    <p style="padding: 10px; font-size: 0.9rem; text-align: center; margin: 0;">Sección de Tutoriales
+                    </p>
+                </div>
+                <div class="media-item">
+                    <img src="Capturas proyectos/SwellTraker/Minijuego.png" alt="Minijuego">
+                    <p style="padding: 10px; font-size: 0.9rem; text-align: center; margin: 0;">Juego Interactivo</p>
+                </div>
+            </div>
+        </section>
+
+        <h3 style="margin-top: 30px;"><i data-lucide="play"
+                style="display:inline-block; vertical-align:middle; margin-right:5px;"></i> Video Funcionamiento</h3>
+        <div class="btn-container">
+            <a href="https://www.youtube.com/watch?v=a2ZWH4Ey0lc" class="btn-primary" target="_blank">
+                <i data-lucide="youtube"></i> Ver Video en Youtube
+            </a>
+        </div>
+
+        <div class="btn-container">
+            <a href="https://github.com/rutsaisan/SwellTraker" class="btn-primary" target="_blank">
+                <i data-lucide="github"></i> Ver Código en GitHub
+            </a>
+        </div>
+
+    </main>
+
+    <footer>
+        SwellTracker Global — Encontrando las mejores olas para ti.<br>
+        (c) Ruth Sainz Santos-Olmo — rutsaisan.code@gmail.com
+    </footer>
+
+    <script>
+        lucide.createIcons();
+        const themeBtn = document.getElementById('themeBtn');
+        const themeIcon = document.getElementById('themeIcon');
+        const body = document.body;
+
+        if (localStorage.getItem('modo-oscuro-swell') === 'activo') {
+            body.classList.add('dark-mode');
+            if (themeIcon) themeIcon.textContent = '☀️';
+        }
+
+        if (themeBtn) {
+            themeBtn.addEventListener('click', () => {
+                body.classList.toggle('dark-mode');
+                const esOscuro = body.classList.contains('dark-mode');
+                themeIcon.textContent = esOscuro ? '☀️' : '🌙';
+                localStorage.setItem('modo-oscuro-swell', esOscuro ? 'activo' : 'inactivo');
+            });
+        }
+    </script>
+</body>
+
+</html>
